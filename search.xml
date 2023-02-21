@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>rbb</title>
+    <url>/2023/02/21/rbb/</url>
+    <content><![CDATA[<p>记录个人生活！</p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>个人生活</category>
+      </categories>
+      <tags>
+        <tag>私人</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/02/15/hello-world/</url>
+    <content><![CDATA[<p>Hello, welcome to my blog!</p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>技术博客</category>
+      </categories>
+      <tags>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+</search>
