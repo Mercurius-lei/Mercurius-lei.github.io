@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>分布式基础知识点</title>
+    <url>/2023/09/25/distributed_base/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>Distributed</category>
+      </categories>
+      <tags>
+        <tag>分布式</tag>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>消息队列</title>
+    <url>/2023/09/25/distributed_message_queue/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>Distributed</category>
+      </categories>
+      <tags>
+        <tag>分布式</tag>
+        <tag>消息队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/09/25/hello-world/</url>
+    <content><![CDATA[<p>Hello, welcome to my blog!</p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>技术博客</category>
+      </categories>
+      <tags>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java基础知识点</title>
+    <url>/2023/09/25/java_base/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java并发</title>
+    <url>/2023/09/25/java_%20concurrent/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>并发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>rbb</title>
+    <url>/2023/02/21/rbb/</url>
+    <content><![CDATA[<p>记录个人生活！</p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>个人生活</category>
+      </categories>
+      <tags>
+        <tag>私人</tag>
+      </tags>
+  </entry>
+</search>
