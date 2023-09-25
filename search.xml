@@ -221,8 +221,56 @@
       </tags>
   </entry>
   <entry>
+    <title>Java基础知识点</title>
+    <url>/2023/09/25/java_base/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Maven</title>
+    <url>/2023/09/25/java_maven/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mybatis</title>
+    <url>/2023/09/25/java_mybatis/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring &amp; SpringBoot</title>
+    <url>/2023/09/25/java_springboot/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java线程池</title>
-    <url>/2023/09/25/java_%20threadpool/</url>
+    <url>/2023/09/25/java_threadpool/</url>
     <content><![CDATA[<h1 id="线程池、连接池"><a href="#线程池、连接池" class="headerlink" title="线程池、连接池"></a>线程池、连接池</h1><span id="more"></span>
 
 <h1 id="1-线程池"><a href="#1-线程池" class="headerlink" title="1 线程池"></a>1 线程池</h1><h2 id="1-1-线程池介绍"><a href="#1-1-线程池介绍" class="headerlink" title="1.1 线程池介绍"></a>1.1 线程池介绍</h2><p>顾名思义，线程池就是管理一系列线程的资源池，其提供了一种限制和管理线程资源的方式。每个线程池还维护一些基本统计信息，例如已完成任务的数量。</p>
@@ -296,54 +344,6 @@
 <p>可考虑使用<code>TransmittableThreadLocal</code>， 项目地址：<a href="https://github.com/alibaba/transmittable-thread-local">https://github.com/alibaba/transmittable-thread-local</a> 。</p>
 <h1 id="2-连接池"><a href="#2-连接池" class="headerlink" title="2 连接池"></a>2 连接池</h1><h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p>（1）<a href="https://javaguide.cn/java/concurrent/java-thread-pool-summary.html">https://javaguide.cn/java/concurrent/java-thread-pool-summary.html</a></p>
 ]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>todo</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java基础知识点</title>
-    <url>/2023/09/25/java_base/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>todo</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Maven</title>
-    <url>/2023/09/25/java_maven/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>todo</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mybatis</title>
-    <url>/2023/09/25/java_mybatis/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>todo</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring &amp; SpringBoot</title>
-    <url>/2023/09/25/java_springboot/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
       <categories>
         <category>Java</category>
       </categories>
