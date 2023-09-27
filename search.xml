@@ -1,42 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>算法基础</title>
-    <url>/2023/09/25/algorithm_base/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>todo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Elasticsearch</title>
-    <url>/2023/09/25/database_%20elasticsearch/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>todo</tag>
-        <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Sql优化</title>
-    <url>/2023/09/25/database_%20optimize/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>todo</tag>
-        <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL</title>
     <url>/2023/09/25/database_mysql/</url>
     <content><![CDATA[<span id="more"></span>]]></content>
@@ -44,14 +8,33 @@
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>todo</tag>
         <tag>数据库</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Elasticsearch</title>
+    <url>/2023/09/25/database_elasticsearch/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+        <tag>todo</tag>
       </tags>
   </entry>
   <entry>
     <title>常用设计模式</title>
     <url>/2023/09/25/design_pattern/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
+    <content><![CDATA[<p>1、在超类中加上新的行为，会使得某些并不适合该行为的子类也具有该行为。</p>
+<p>因此为了复用而使用继承，并不完美。</p>
+<span id="more"></span>
+
+<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="设计原则1"><a href="#设计原则1" class="headerlink" title="设计原则1"></a>设计原则1</h3><p>找到应用中可能需要变化之处，把它们独立出来，不要和那些不需要变化的代码混在一起。</p>
+<h3 id="设计原则2"><a href="#设计原则2" class="headerlink" title="设计原则2"></a>设计原则2</h3><p>针对接口编程，而不是针对实现编程。</p>
+<p>充分利用多态的特性，变量的声明类型应该是一个超类型，通常是一个抽象类或者是一个接口。</p>
+]]></content>
       <categories>
         <category>设计模式</category>
       </categories>
@@ -61,27 +44,127 @@
       </tags>
   </entry>
   <entry>
-    <title>分布式事务</title>
-    <url>/2023/09/25/distributed_%20transaction/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
+    <title>Sql优化</title>
+    <url>/2023/09/25/database_optimize/</url>
+    <content><![CDATA[<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><span id="more"></span>
+
+<h2 id="1、-分库"><a href="#1、-分库" class="headerlink" title="1、 分库"></a>1、 分库</h2><p><strong>分库</strong> 就是将数据库中的数据分散到不同的数据库上，可以垂直分库，也可以水平分库。</p>
+<ul>
+<li><p><strong>垂直分库</strong> 就是把单一数据库按照业务进行划分，不同的业务使用不同的数据库，进而将一个数据库的压力分担到多个数据库。例如：说你将数据库中的用户表、订单表和商品表分别单独拆分为用户数据库、订单数据库和商品数据库。</p>
+</li>
+<li><p><strong>水平分库</strong> 是把同一个表按一定规则拆分到不同的数据库中，每个库可以位于不同的服务器上，这样就实现了水平扩展，解决了单表的存储和性能瓶颈的问题。例如：订单表数据量太大，你对订单表进行了水平切分（水平分表），然后将切分后的 2 张订单表分别放在两个不同的数据库。</p>
+</li>
+</ul>
+<p>##2、分表</p>
+<p><strong>分表</strong> 就是对单表的数据进行拆分，可以是垂直拆分，也可以是水平拆分。</p>
+<ul>
+<li><p><strong>垂直分表</strong> 是对数据表列的拆分，把一张列比较多的表拆分为多张表。例如：我们可以将用户信息表中的一些列单独抽出来作为一个表。</p>
+</li>
+<li><p><strong>水平分表</strong> 是对数据表行的拆分，把一张行比较多的表拆分为多张表，可以解决单一表数据量过大的问题。例如：我们可以将用户信息表拆分成多个用户信息表，这样就可以避免单一表数据量过大对性能造成影响。</p>
+</li>
+</ul>
+<p>##3、分库分表场景</p>
+<ul>
+<li>单表的数据达到千万级别以上，数据库读写速度比较缓慢。</li>
+<li>数据库中的数据占用的空间越来越大，备份时间越来越长。</li>
+<li>应用的并发量太大。</li>
+</ul>
+<p>##4、分库分表引入的问题</p>
+<ul>
+<li><strong>join 操作</strong></li>
+<li><strong>事务问题</strong></li>
+<li><strong>分布式 ID</strong></li>
+<li><strong>跨库聚合查询问题</strong></li>
+<li>……</li>
+</ul>
+<p>##5、分库分表后的数据迁移</p>
+<p>（1）停机更新</p>
+<p>（2）增量迁移</p>
+<p>（3）双写</p>
+<p>##6、MySQL Online DDL </p>
+<p>MySQL 的 DDL 有很多种方法。</p>
+<p>MySQL 本身自带三种方法，分别是：copy、inplace、instant。</p>
+<ul>
+<li><p>copy 算法为最古老的算法，在 MySQL 5.5 及以下为默认算法。MySQL 会建立一个新的临时表，把源表的所有数据写入到临时表，在此期间无法对源表进行数据写入。MySQL 在完成临时表的写入之后，用临时表替换掉源表。这个算法主要被早期（&lt;&#x3D;5.5）版本所使用。</p>
+</li>
+<li><p>从 MySQL 5.6 开始，引入了 inplace 算法并且默认使用。inplace 算法还包含两种类型：rebuild-table 和 not-rebuild-table。MySQL 使用 inplace 算法时，会自动判断，能使用 not-rebuild-table 的情况下会尽量使用，不能的时候才会使用 rebuild-table。当 DDL 涉及到主键和全文索引相关的操作时，无法使用 not-rebuild-table，必须使用 rebuild-table。其他情况下都会使用 not-rebuild-table。</p>
+<p>nplace 算法的操作阶段主要分为三个：</p>
+<ul>
+<li>Prepare阶段：    - 创建新的临时 frm 文件(与 InnoDB 无关)。    - <strong>持有 EXCLUSIVE-MDL 锁，禁止读写</strong>。    - 根据 alter 类型，确定执行方式（copy，online-rebuild，online-not-rebuild）。 更新数据字典的内存对象。    - 分配 row_log 对象记录数据变更的增量（仅 rebuild 类型需要）。    - 生成新的临时ibd文件 new_table（仅rebuild类型需要）。</li>
+<li>Execute 阶段：<ul>
+<li><strong>降级EXCLUSIVE-MDL锁，允许读写</strong>。</li>
+<li>扫描old_table聚集索引（主键）中的每一条记录 rec。</li>
+<li>遍历new_table的聚集索引和二级索引，逐一处理。</li>
+<li>根据 rec 构造对应的索引项。</li>
+<li>将构造索引项插入 sort_buffer 块排序。</li>
+<li>将 sort_buffer 块更新到 new_table 的索引上。</li>
+<li>记录 online-ddl 执行过程中产生的增量（仅 rebuild 类型需要）。</li>
+<li>重放 row_log 中的操作到 new_table 的索引上（not-rebuild 数据是在原表上更新）。</li>
+<li>重放 row_log 中的DML操作到 new_table 的数据行上。</li>
+</ul>
+</li>
+<li>Commit阶段：<ul>
+<li>当前 Block 为 row_log 最后一个时，<strong>禁止读写，升级到 EXCLUSIVE-MDL 锁</strong>。</li>
+<li>重做 row_log 中最后一部分增量。</li>
+<li>更新 innodb 的数据字典表。</li>
+<li>提交事务（刷事务的 redo 日志）。</li>
+<li>修改统计信息。</li>
+<li>rename 临时 ibd 文件，frm文件。</li>
+<li>变更完成，<strong>释放 EXCLUSIVE-MDL 锁</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>从 MySQL 8.0.12 开始，引入了 instant 算法并且默认使用。目前 instant 算法只支持增加列等少量 DDL 类型的操作（可以直接修改表的 metadata 数据，省掉了 rebuild 的过程，极大的缩短了 DDL 语句的执行时间），其他类型仍然会默认使用 inplace。</p>
+</li>
+</ul>
+<p>有一些第三方工具也可以实现 DDL 操作，最常见的是 percona 的 pt-online-schema-change 工具（简称为 pt-osc），和 github 的 gh-ost 工具，均支持 MySQL 5.5 以上的版本。</p>
+<p>需要注意以下几个方面：</p>
+<p>（1）负载</p>
+<p>所有方式对大表做 DDL 都会增加负载，只是程度的不同，主要为 IO 的负载。如果是 IO 使用非常高的实例，建议在 IO 较小的时间段执行 DDL 操作。</p>
+<p>（2）额外空间占用</p>
+<p>copy、inplace rebuild-table、gh-ost、pt-online-schema-change，都会将表完整复制一份出来再做 DDL 变更，因此会使用和原表空间一样大（甚至更大，如果是加列的操作的话）的额外空间，另外还会生成大量的临时日志。要特别注意剩余空间，确保空间充裕，不然可能导致 DDL 过程中磁盘写满。</p>
+<p>（3）主从同步延时</p>
+<p>所有方式做 DDL 均会引发主从同步延时。其中 copy 和 inplace 算法，只有主完成了 DDL 操作之后，binlog 才会同步给从库，从库才能开始操作 DDL，从库操作完 DDL 之后才能开始操作其他语句，因此会造成巨大的（大概两倍 DDL 操作时间）的延时。其他方法产生的延时较小，但仍然可能有几秒的延时。</p>
+<p>（4）MDL</p>
+<p>所有方式做 DDL 均会产生 MDL（metadata lock）。除了 copy 模式会有持续性的锁（DDL 的整个过程期间无法向该表写入任何数据）之外，其他方式的 MDL 均为短暂的锁。</p>
+<p>除了 copy 模式之外的所有模式，MDL 如下：</p>
+<ol>
+<li>在 DDL 的开始阶段，申请该表的 EXCLUSIVE-MDL 锁，禁止读写</li>
+<li>降级 EXCLUSIVE-MDL 锁，允许读写</li>
+<li>在 DDL 的最终 COMMIT 阶段，升级 EXCLUSIVE-MDL 锁，禁止读写</li>
+</ol>
+<p>其中的阶段一和阶段三，其 MDL 的持续时间都是非常短暂的，也就是申请到了 MDL 锁之后会在很快的时间（一般小于一秒）处理完成相关操作并释放锁，一般情况下是不会影响业务的。只有阶段二是真正在处理数据，持续时间一般较长。</p>
+<p>但是，有可能出现在阶段一和阶段三，无法申请到 MDL 的情况。这是因为 MDL 和所有的读写语句都可能会产生冲突，如果是在申请 MDL 的时候，之前有读写的事务一直没有执行完成（或者执行完成之后一直没有 COMMIT），MDL 就会无法立刻申请到，这个时候，DDL 语句，<strong>以及所有在该 DDL 语句之后的读写事务</strong>，都会阻塞并等待之前的读写事务完成，导致整个实例处于不可用状态。这个时候 <code>SHOW PROCESSLIST</code> 看到的语句状态为 <code>waiting for metadata lock</code>。</p>
+<p>（5）其他</p>
+<p>MySQL 的 inplace 算法虽然支持在 DDL 过程中间的读写，但是对写入的数据量有上限，不能超过 <code>innodb_online_alter_log_max_size</code>（默认为 128M）。如果超过上限可能导致执行失败。</p>
+<h2 id="7、尽量设置字段为not-null"><a href="#7、尽量设置字段为not-null" class="headerlink" title="7、尽量设置字段为not null"></a>7、尽量设置字段为not null</h2><p>（1）<strong>聚合函数不准确</strong></p>
+<p>对于NULL值的列，使用聚合函数的时候会忽略NULL值。</p>
+<p><img src="/./../images/database/database_optimize_1.jpeg" alt="img"></p>
+<p>（2）对于NULL值的列，是不能使用<code>=</code>表达式进行判断的，下面对<code>name</code>的查询是不成立的，必须使用<code>is NULL</code>。</p>
+<p>（3）NULL和其他任何值进行运算都是NULL，包括表达式的值也是NULL。</p>
+<p><code>user</code>表第二条记录<code>age</code>是NULL，所以<code>+1</code>之后还是NULL，<code>name</code>是NULL，进行<code>concat</code>运算之后结果还是NULL。</p>
+<p>（4）对于<code>distinct</code>和<code>group by</code>来说，所有的NULL值都会被视为相等，对于<code>order by</code>来说升序NULL会排在最前</p>
+<p>（5）索引列存在NULL会导致优化器在做索引选择的时候更复杂，更加难以优化。~~（MySQL版本已优化）</p>
+<p><del>## 8、MySQL in vs exists</del>（版本优化已趋于接近，讨论无意义）</p>
+<p><del>- IN查询在内部表和外部表上都可以使用到索引；</del><br><del>- Exists查询仅在内部表上可以使用到索引；</del><br><del>- 当<strong>子查询结果集</strong>很大，而外部表较小的时候，Exists的Block Nested Loop(Block 嵌套循环)的作用开始显现，并弥补外部表无法用到索引的缺陷，查询效率会优于IN。</del><br><del>- 当<strong>子查询结果集</strong>较小，而外部表很大的时候，Exists的Block嵌套循环优化效果不明显，IN 的外表索引优势占主要作用，此时IN的查询效率会优于Exists。</del></p>
+<h2 id="8、SQL优化"><a href="#8、SQL优化" class="headerlink" title="8、SQL优化"></a>8、SQL优化</h2><p>总结到 SQL 优化中，就如下三点：</p>
+<ul>
+<li><strong>最大化利用索引。</strong></li>
+<li><strong>尽可能避免全表扫描。</strong></li>
+<li><strong>减少无效数据的查询。</strong></li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>1、<a href="https://javaguide.cn/high-performance/read-and-write-separation-and-library-subtable.html#%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8">https://javaguide.cn/high-performance/read-and-write-separation-and-library-subtable.html#%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8</a></p>
+<p>2、100亿数据平滑数据迁移,不影响服务：<a href="https://www.w3cschool.cn/architectroad/architectroad-data-smooth-migration.html">https://www.w3cschool.cn/architectroad/architectroad-data-smooth-migration.html</a></p>
+<p>3、MySQL 5.7 特性：Online DDL：<a href="https://cloud.tencent.com/developer/article/1697076">https://cloud.tencent.com/developer/article/1697076</a></p>
+<p>4、为什么数据库字段要使用NOT NULL：<a href="https://cloud.tencent.com/developer/article/1812479">https://cloud.tencent.com/developer/article/1812479</a></p>
+]]></content>
       <categories>
-        <category>分布式</category>
+        <category>数据库</category>
       </categories>
       <tags>
+        <tag>数据库</tag>
         <tag>todo</tag>
-        <tag>分布式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>分布式基础知识点</title>
-    <url>/2023/09/25/distributed_base/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>分布式</category>
-      </categories>
-      <tags>
-        <tag>todo</tag>
-        <tag>分布式</tag>
       </tags>
   </entry>
   <entry>
@@ -98,15 +181,223 @@
       </tags>
   </entry>
   <entry>
-    <title>分布式配置中心</title>
-    <url>/2023/09/25/distributed_config/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
+    <title>分布式基础知识点</title>
+    <url>/2023/09/25/distributed_base/</url>
+    <content><![CDATA[<h1 id="分布式面试题"><a href="#分布式面试题" class="headerlink" title="分布式面试题"></a>分布式面试题</h1><span id="more"></span>
+
+<h1 id="0、基本原则"><a href="#0、基本原则" class="headerlink" title="0、基本原则"></a>0、基本原则</h1><p>CAP指的是在一个分布式系统中：</p>
+<ul>
+<li>一致性（Consistency） （等同于所有节点访问同一份最新的数据副本）</li>
+<li>可用性（Availability）（每次请求都能获取到非错的响应——但是不保证获取的数据为最新数据）</li>
+<li>分区容错性（Partition tolerance）（以实际效果而言，分区相当于对通信的时限要求。系统如果不能在时限内达成数据一致性，就意味着发生了分区的情况，必须就当前操作在 C 和 A 之间做出选择）</li>
+</ul>
+<p>这三个要素最多只能同时实现两点，不可能三者兼顾。</p>
+<p>如果你的实际业务场景，更需要的是保证数据一致性。那么请使用CP类型的分布式锁，比如：zookeeper，它是基于磁盘的，性能可能没那么好，但数据一般不会丢。</p>
+<p>如果你的实际业务场景，更需要的是保证数据高可用性。那么请使用AP类型的分布式锁，比如：redis，它是基于内存的，性能比较好，但有丢失数据的风险。</p>
+<p>其实，在我们绝大多数分布式业务场景中，使用redis分布式锁就够了，真的别太较真。因为数据不一致问题，可以通过最终一致性方案解决。但如果系统不可用了，对用户来说是暴击一万点伤害。</p>
+<p>一般来说，用Redis控制共享资源并且还要求数据安全要求较高的话，最终的保底方案是对业务数据做幂等控制，这样一来，即使出现多个客户端获得锁的情况也不会影响数据的一致性。</p>
+<p>#1、分布式服务接口幂等性</p>
+<p>其实保证幂等性（比如不能重复扣款）主要是三点：</p>
+<p>（1）对于每个请求必须有一个唯一的标识，举个例子：订单支付请求，肯定得包含订单ID，一个订单ID最多支付一次，对吧</p>
+<p>（2）每次处理完请求之后，必须有一个记录标识这个请求处理过了，比如说常见得方案是再mysql中记录个状态啥得，比如支付之前记录一条这个订单得支付流水，而且支付流水采用order id作为唯一键（unique key）。只有成功插入这个支付流水，才可以执行实际得支付扣款</p>
+<p>（3）每次接收请求需要进行判断之前是否处理过得逻辑处理，比如说，如果有一个订单已经支付了，就已经有了一条支付流水，那么如果重复发送这个请求，则此时先插入支付流水，order id已经存在了，唯一键约束生效，报错插入不进去得。然后你就不用再扣款了。</p>
+<p>#2、zk的使用场景</p>
+<p>（1）分布式协调：这个其实就是zk很经典的一个用法，简单来说，就好比，你系统A发送个请求到mq，然后B消费了之后处理。那A系统如何指导B系统的处理结果？用zk就可以实现分布式系统之间的协调工作。A系统发送请求之后可以在zk上对某个节点的值注册个监听器，一旦B系统处理完了就修改zk那个节点的值，A立马就可以收到通知，完美解决。</p>
+<p>（2）分布所锁：对某一个数据联系发出两个修改操作，两台机器同时收到请求，但是只能一台机器先执行另外一个机器再执行，那么此时就可以使用zk分布式锁，一个机器接收到了请求之后先获取zk上的一把分布式锁，就是可以去创建一个znode，接着执行操作，然后另外一个机器也尝试去创建那个znode，结果发现自己创建不了，因为被别人创建了，那只能等着，等等一个机器执行完了自己再执行。</p>
+<p>zk分布式锁，其实做的比较简单，就是某个节点尝试创建临时znode（防止死锁呗），此时创建成功了就获取了这个锁，这个时候别的客户端来创建锁会失败，只能注册监听器来监听这个锁，释放锁就是删除这个znode，一旦释放掉就会反向通知客户端，然后等待着的客户端就可以再次尝试重新加锁。</p>
+<p>（3）配置信息管理：zk可以用作很多系统的配置信息的管理，比如kafka，storm等等很多分布式系统都会选用zk来做一些元数据，配置信息的管理</p>
+<p>（4）HA高可用性：这个应该是很常见的，比如hdfs，yarn等很多大数据系统，都选择基于zk来开发HA高可用机制，就是一个重要进程一般会主备两个，主进程挂了立马通过zk感知到切换到备份进程</p>
+<h1 id="3、分布式锁"><a href="#3、分布式锁" class="headerlink" title="3、分布式锁"></a>3、分布式锁</h1><p>##（1）分布式锁特性</p>
+<ul>
+<li><p>互斥性：在任何时刻，对于同一条数据，只有一台应用可以获取到分布式锁；</p>
+</li>
+<li><p>高可用性：在分布式场景下，一小部分服务器宕机不影响正常使用，这种情况就需要将提供分布式锁的服务以集群的方式部署；</p>
+</li>
+<li><p>防止锁超时：如果客户端没有主动释放锁，服务器会在一段时间之后自动释放锁，防止客户端宕机或者网络不可达时产生死锁；</p>
+</li>
+<li><p>独占性：加锁解锁必须由同一台服务器进行，也就是锁的持有者才可以释放锁，不能出现你加的锁，别人给你解锁了；</p>
+</li>
+</ul>
+<p>##（2）分布式锁的缺陷</p>
+<ul>
+<li>客户端长时间阻塞导致锁失效问题：客户端1得到了锁，因为网络问题或者GC等原因导致长时间阻塞，然后业务程序还没执行完锁就过期了，这时候客户端2也能正常拿到锁，可能会导致线程安全的问题。</li>
+<li>redis服务器时钟漂移问题：如果redis服务器的机器时钟发生了向前跳跃，就会导致这个key过早超时失效，比如说客户端1拿到锁后，key的过期时间是12:02分，但redis服务器本身的时钟比客户端快了2分钟，导致key在12:00的时候就失效了，这时候，如果客户端1还没有释放锁的话，就可能导致多个客户端同时持有同一把锁的问题。</li>
+<li>单点实例安全问题：如果redis是单master模式的，当这台机宕机的时候，那么所有的客户端都获取不到锁了，为了提高可用性，可能就会给这个master加一个slave，但是因为redis的主从同步是异步进行的，可能会出现客户端1设置完锁后，master挂掉，slave提升为master，因为异步复制的特性，客户端1设置的锁丢失了，这时候客户端2设置锁也能够成功，导致客户端1和客户端2同时拥有锁。</li>
+</ul>
+<h2 id="（2）Redis中lua脚本保证操作原子性"><a href="#（2）Redis中lua脚本保证操作原子性" class="headerlink" title="（2）Redis中lua脚本保证操作原子性"></a>（2）Redis中lua脚本保证操作原子性</h2><p>redis中使用lua脚本，可以保证操作的原子性，原因：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">“Atomicity of scripts</span><br><span class="line">Redis uses the same Lua interpreter to run all the commands. Also Redis guarantees that a script is executed in an atomic way: no other script or Redis command will be executed while a script is being executed. This semantic is similar to the one of MULTI / EXEC. From the point of view of all the other clients the effects of a script are either still not visible or already completed.”</span><br></pre></td></tr></table></figure>
+
+<h2 id="（）Redis分布式锁"><a href="#（）Redis分布式锁" class="headerlink" title="（）Redis分布式锁"></a>（）Redis分布式锁</h2><p>说道Redis分布式锁大部分人都会想到：<code>setnx+lua</code>，或者知道<code>set key value px milliseconds nx</code>。后一种方式的核心实现命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- 获取锁（unique_value可以是UUID等）</span><br><span class="line">SET resource_name unique_value NX PX 30000</span><br><span class="line"></span><br><span class="line">- 释放锁（lua脚本中，一定要比较value，防止误解锁）</span><br><span class="line">if redis.call(&quot;get&quot;,KEYS[1]) == ARGV[1] then</span><br><span class="line">    return redis.call(&quot;del&quot;,KEYS[1])</span><br><span class="line">else</span><br><span class="line">    return 0</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>这种实现方式有3大要点（也是面试概率非常高的地方）：</p>
+<ol>
+<li>set命令要用<code>set key value px milliseconds nx</code>；</li>
+<li>value要具有唯一性；</li>
+<li>释放锁时要验证value值，不能误解锁；</li>
+</ol>
+<p>事实上这类琐最大的缺点就是它加锁时只作用在一个Redis节点上，即使Redis通过sentinel保证高可用，如果这个master节点由于某些原因发生了主从切换，那么就会出现锁丢失的情况：</p>
+<ol>
+<li>在Redis的master节点上拿到了锁；</li>
+<li>但是这个加锁的key还没有同步到slave节点；</li>
+<li>master故障，发生故障转移，slave节点升级为master节点；</li>
+<li>导致锁丢失。</li>
+</ol>
+<p>##（）Redlock算法</p>
+<p>在Redis的分布式环境中，我们假设有N个Redis master。这些节点<strong>完全互相独立，不存在主从复制或者其他集群协调机制</strong>。我们确保将在N个实例上使用与在Redis单实例下相同方法获取和释放锁。现在我们假设有5个Redis master节点，同时我们需要在5台服务器上面运行这些Redis实例，这样保证他们不会同时都宕掉。</p>
+<p>为了取到锁，客户端应该执行以下操作:</p>
+<ul>
+<li>获取当前Unix时间，以毫秒为单位。</li>
+<li>依次尝试从5个实例，使用相同的key和<strong>具有唯一性的value</strong>（例如UUID）获取锁。当向Redis请求获取锁时，客户端应该设置一个网络连接和响应超时时间，这个超时时间应该小于锁的失效时间。例如你的锁自动失效时间为10秒，则超时时间应该在5-50毫秒之间。这样可以避免服务器端Redis已经挂掉的情况下，客户端还在死死地等待响应结果。如果服务器端没有在规定时间内响应，客户端应该尽快尝试去另外一个Redis实例请求获取锁。</li>
+<li>客户端使用当前时间减去开始获取锁时间（步骤1记录的时间）就得到获取锁使用的时间。<strong>当且仅当从大多数</strong>（N&#x2F;2+1，这里是3个节点）<strong>的Redis节点都取到锁，并且使用的时间小于锁失效时间时，锁才算获取成功</strong>。</li>
+<li>如果取到了锁，key的真正有效时间等于有效时间减去获取锁所使用的时间（步骤3计算的结果）。</li>
+<li>如果因为某些原因，获取锁失败（没有在至少N&#x2F;2+1个Redis实例取到锁或者取锁时间已经超过了有效时间），客户端应该在<strong>所有的Redis实例上进行解锁</strong>（即便某些Redis实例根本就没有加锁成功，防止某些节点获取到锁但是客户端没有得到响应而导致接下来的一段时间不能被重新获取锁）。</li>
+</ul>
+<p>##（）Redis可重入锁</p>
+<p>加锁主要是通过以下脚本实现的：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if (redis.call(&#x27;exists&#x27;, KEYS[1]) == 0) </span><br><span class="line">then  </span><br><span class="line">   redis.call(&#x27;hset&#x27;, KEYS[1], ARGV[2], 1);        redis.call(&#x27;pexpire&#x27;, KEYS[1], ARGV[1]); </span><br><span class="line">   return nil; </span><br><span class="line">end;</span><br><span class="line">if (redis.call(&#x27;hexists&#x27;, KEYS[1], ARGV[2]) == 1) </span><br><span class="line">then  </span><br><span class="line">  redis.call(&#x27;hincrby&#x27;, KEYS[1], ARGV[2], 1); </span><br><span class="line">  redis.call(&#x27;pexpire&#x27;, KEYS[1], ARGV[1]); </span><br><span class="line">  return nil; </span><br><span class="line">end;</span><br><span class="line">return redis.call(&#x27;pttl&#x27;, KEYS[1]);1.2.3.4.5.6.7.8.9.10.11.12.</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li>KEYS[1]：锁名</li>
+<li>ARGV[1]：过期时间</li>
+<li>ARGV[2]：uuid + “:” + threadId，可认为是requestId</li>
+</ul>
+<ol>
+<li>先判断如果锁名不存在，则加锁。</li>
+<li>接下来，判断如果锁名和requestId值都存在，则使用hincrby命令给该锁名和requestId值计数，每次都加1。注意一下，这里就是重入锁的关键，锁重入一次值就加1。</li>
+<li>如果锁名存在，但值不是requestId，则返回过期时间。</li>
+</ol>
+<p>释放锁主要是通过以下脚本实现的：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if (redis.call(&#x27;hexists&#x27;, KEYS[1], ARGV[3]) == 0) </span><br><span class="line">then </span><br><span class="line">  return nil</span><br><span class="line">end</span><br><span class="line">local counter = redis.call(&#x27;hincrby&#x27;, KEYS[1], ARGV[3], -1);</span><br><span class="line">if (counter &gt; 0) </span><br><span class="line">then </span><br><span class="line">    redis.call(&#x27;pexpire&#x27;, KEYS[1], ARGV[2]); </span><br><span class="line">    return 0; </span><br><span class="line"> else </span><br><span class="line">   redis.call(&#x27;del&#x27;, KEYS[1]); </span><br><span class="line">   redis.call(&#x27;publish&#x27;, KEYS[2], ARGV[1]); </span><br><span class="line">   return 1; </span><br><span class="line">end; </span><br><span class="line">return nil1.2.3.4.5.6.7.8.9.10.11.12.13.14.15.</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>先判断如果锁名和requestId值不存在，则直接返回。</li>
+<li>如果锁名和requestId值存在，则重入锁减1。</li>
+<li>如果减1后，重入锁的value值还大于0，说明还有引用，则重试设置过期时间。</li>
+<li>如果减1后，重入锁的value值还等于0，则可以删除锁，然后发消息通知等待线程抢锁。</li>
+</ol>
+<h2 id="（）读写锁与锁分段"><a href="#（）读写锁与锁分段" class="headerlink" title="（）读写锁与锁分段"></a>（）读写锁与锁分段</h2><p>提升redis分布式锁性能</p>
+<ul>
+<li>区分读写锁</li>
+<li>将大锁分段：在java中ConcurrentHashMap，就是将数据分为16段，每一段都有单独的锁，并且处于不同锁段的数据互不干扰，以此来提升锁的性能</li>
+</ul>
+<h2 id="（）自动续期"><a href="#（）自动续期" class="headerlink" title="（）自动续期"></a>（）自动续期</h2><p>自动续期的功能是获取锁之后开启一个定时任务，每隔10秒判断一下锁是否存在，如果存在，则刷新过期时间。如果续期3次，也就是30秒之后，业务方法还是没有执行完，就不再续期了。</p>
+<p>在实现自动续期功能时，还需要设置一个总的过期时间，可以跟redisson保持一致，设置成30秒。如果业务代码到了这个总的过期时间，还没有执行完，就不再自动续期了。</p>
+<p>##（）Redis分布式锁与ZK比较</p>
+<p>redis分布式锁，其实需要自己不断去尝试获取锁，比较消耗性能</p>
+<p>zk分布式锁，获取不到锁，注册个监听器即可，不需要不断主动尝试获取锁，性能开销较低</p>
+<p>另外一点就是，如果redis获取锁的那个客户端bug了，或者挂了，那么等待超时时间之后才能释放锁，而zk的话，因为创建的是临时节点，只要客户端挂了，znode就没了，此时就会自动释放锁</p>
+<h2 id="（）乐观锁和悲观锁"><a href="#（）乐观锁和悲观锁" class="headerlink" title="（）乐观锁和悲观锁"></a>（）乐观锁和悲观锁</h2><p>乐观锁可以使用CAS和版本号机制来实施</p>
+<p>（1）CAS（Compare And Swap）：CAS操作包括了3个操作数：</p>
+<ul>
+<li>需要读写的内存位置(V)</li>
+<li>进行比较的预期值(A)</li>
+<li>拟写入的新值(B)</li>
+</ul>
+<p>（2）版本号机制</p>
+<p>除了CAS，版本号机制也可以用来实现乐观锁。版本号机制的基本思路是在数据中增加一个字段version，表示该数据的版本号，每当数据被修改，版本号加1。当某个线程查询数据时，将该数据的版本号一起查出来；当该线程更新数据时，判断当前版本号与之前读取的版本号是否一致，如果一致才进行操作。</p>
+<p>乐观锁和悲观锁比较：</p>
+<p>1、功能限制<br>与悲观锁相比，乐观锁适用的场景受到了更多的限制，无论是CAS还是版本号机制。</p>
+<p>例如，CAS只能保证单个变量操作的原子性，当涉及到多个变量时，CAS是无能为力的，而synchronized则可以通过对整个代码块加锁来处理。再比如版本号机制，如果query的时候是针对表1，而update的时候是针对表2，也很难通过简单的版本号来实现乐观锁。</p>
+<p>2、竞争激烈程度<br>如果悲观锁和乐观锁都可以使用，那么选择就要考虑竞争的激烈程度：</p>
+<p>当竞争不激烈 (出现并发冲突的概率小)时，乐观锁更有优势，因为悲观锁会锁住代码块或数据，其他线程无法同时访问，影响并发，而且加锁和释放锁都需要消耗额外的资源。<br>当竞争激烈(出现并发冲突的概率大)时，悲观锁更有优势，因为乐观锁在执行更新时频繁失败，需要不断重试，浪费CPU资源。</p>
+<p>乐观锁加锁吗？</p>
+<p>（1）乐观锁本身是不加锁的，只是在更新时判断一下数据是否被其他线程更新了；AtomicInteger便是一个例子。</p>
+<p>（2）有时乐观锁可能与加锁操作合作，例如，在前述updateCoins()的例子中，MySQL在执行update时会加排它锁。但这只是乐观锁与加锁操作合作的例子，不能改变“乐观锁本身不加锁”这一事实。</p>
+<h1 id="4、分布式事务"><a href="#4、分布式事务" class="headerlink" title="4、分布式事务"></a>4、分布式事务</h1><h1 id="5、分布式一致性算法"><a href="#5、分布式一致性算法" class="headerlink" title="5、分布式一致性算法"></a>5、分布式一致性算法</h1><p>Raft</p>
+<p>#参考文档</p>
+<p>（1）分布式锁：<a href="https://juejin.cn/post/6996915693811662884">https://juejin.cn/post/6996915693811662884</a></p>
+<p>（2）乐观锁和悲观锁：<a href="https://www.cnblogs.com/kismetv/p/10787228.html">https://www.cnblogs.com/kismetv/p/10787228.html</a></p>
+]]></content>
       <categories>
         <category>分布式</category>
       </categories>
       <tags>
         <tag>todo</tag>
         <tag>分布式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>分布式缓存</title>
+    <url>/2023/09/27/distributed_cache/</url>
+    <content><![CDATA[<h1 id="缓存的应用场景"><a href="#缓存的应用场景" class="headerlink" title="缓存的应用场景"></a>缓存的应用场景</h1><span id="more"></span>
+
+<ul>
+<li>高频访问的数据：限于磁盘 I&#x2F;O 的瓶颈，对于高频访问的数据，需要缓存起来提高性能，降低下游数据库的压力冲击；</li>
+<li>复杂运算的结果：对于需要耗费 CPU、经过复杂运算才能获得的结果，需要缓存来，做到“一劳长时间逸”，如 count(id)统计论坛在线人数；</li>
+<li>读多写少：每次读都需要 select 甚至 join 很多表，数据库压力大，由于写得少，容易做到数据的一致性，非常适合缓存的应用；</li>
+<li>一致性要求低：由于缓存的数据来源于数据库，在高并发时数据不一致性就比较凸显，不一致的问题可以解决但代价不菲；</li>
+</ul>
+<h1 id="缓存常见问题"><a href="#缓存常见问题" class="headerlink" title="缓存常见问题"></a>缓存常见问题</h1><h2 id="1、缓存雪崩-Cache-Avalanche"><a href="#1、缓存雪崩-Cache-Avalanche" class="headerlink" title="1、缓存雪崩 Cache Avalanche"></a>1、缓存雪崩 Cache Avalanche</h2><p>缓存雪崩是指当大量缓存同时过期或缓存服务宕机，所有请求的都直接访问数据库，造成数据库高负载，影响性能，甚至数据库宕机，它和缓存击穿的区别在于失效 key 的数量。</p>
+<p>解决措施</p>
+<ul>
+<li><h5 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h5></li>
+<li><h5 id="随机过期时间"><a href="#随机过期时间" class="headerlink" title="随机过期时间"></a>随机过期时间</h5></li>
+<li><h5 id="服务降级或熔断"><a href="#服务降级或熔断" class="headerlink" title="服务降级或熔断"></a>服务降级或熔断</h5></li>
+</ul>
+<h2 id="2、缓存穿透-Cache-Penetration"><a href="#2、缓存穿透-Cache-Penetration" class="headerlink" title="2、缓存穿透 Cache Penetration"></a>2、缓存穿透 Cache Penetration</h2><p>缓存穿透是指数据库中没有符合条件的数据，缓存服务器中也就没有缓存数据，导致业务系统每次都绕过缓存服务器查询下游的数据库，缓存服务器完全失去了其应用的作用。如果黑客试图发起针对该 key 的大量访问攻击，数据库将不堪重负，最终可能导致崩溃宕机。</p>
+<p>解决措施：</p>
+<ul>
+<li><p>#####参数校验</p>
+</li>
+<li><h5 id="存储空值-x2F-默认值"><a href="#存储空值-x2F-默认值" class="headerlink" title="存储空值&#x2F;默认值"></a>存储空值&#x2F;默认值</h5></li>
+<li><h5 id="布隆过滤器-Bloom-Filter"><a href="#布隆过滤器-Bloom-Filter" class="headerlink" title="布隆过滤器(Bloom Filter)"></a>布隆过滤器(Bloom Filter)</h5></li>
+</ul>
+<h2 id="3、缓存击穿-Cache-Breakdown"><a href="#3、缓存击穿-Cache-Breakdown" class="headerlink" title="3、缓存击穿 Cache Breakdown"></a>3、缓存击穿 Cache Breakdown</h2><p>缓存击穿是指当某一 key 的缓存过期时大并发量的请求同时访问此 key，瞬间击穿缓存服务器直接访问数据库，让数据库处于负载的情况，缓存击穿一般发生在高并发的互联网应用场景。</p>
+<p>解决措施：</p>
+<ul>
+<li><h5 id="锁更新"><a href="#锁更新" class="headerlink" title="锁更新"></a>锁更新</h5></li>
+<li><h5 id="异步更新（例如热点数据永远不过期）"><a href="#异步更新（例如热点数据永远不过期）" class="headerlink" title="异步更新（例如热点数据永远不过期）"></a>异步更新（例如热点数据永远不过期）</h5></li>
+</ul>
+<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="1、Redis介绍"><a href="#1、Redis介绍" class="headerlink" title="1、Redis介绍"></a>1、Redis介绍</h2><p>Redis is an open source (BSD licensed), in-memory <strong>data structure store</strong>, used as a database, cache, and message broker.  ——From <a href="https://redis.io/">https://redis.io/</a></p>
+<p>优势：</p>
+<ul>
+<li>支持多种数据类型</li>
+<li>持久化存储</li>
+<li>读写性能很好，可以达到10w&#x2F;s的频率</li>
+<li>原子操作，事务</li>
+<li>……</li>
+</ul>
+<h2 id="2、Redis数据结构"><a href="#2、Redis数据结构" class="headerlink" title="2、Redis数据结构"></a>2、Redis数据结构</h2><p>（1）<strong>string(字符串)</strong></p>
+<p> <strong>动态字符串</strong>，这意味着使用者可以修改，它的底层实现有点类似于 Java 中的 <strong>ArrayList</strong>。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">SET/GET：设置/查询</span><br><span class="line">&gt; SET key value</span><br><span class="line">OK</span><br><span class="line">&gt; GET key</span><br><span class="line"><span class="string">&quot;value&quot;</span></span><br><span class="line">&gt; EXISTS key</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">&gt; DEL key</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">&gt; GET key</span><br><span class="line">(nil)</span><br><span class="line"></span><br><span class="line">MSET/MGET：批量设置/查询</span><br><span class="line">&gt; MSET key1 value1 key2 value2</span><br><span class="line">OK</span><br><span class="line">&gt; MGET key1 key2</span><br><span class="line">1) <span class="string">&quot;value1&quot;</span></span><br><span class="line">2) <span class="string">&quot;value2&quot;</span></span><br><span class="line"></span><br><span class="line">expire：设置过期时间</span><br><span class="line">&gt; expire key 5</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">&gt; get key</span><br><span class="line"><span class="string">&quot;value&quot;</span></span><br><span class="line">&gt; get key</span><br><span class="line">(nil)</span><br><span class="line"></span><br><span class="line">SETEX = SET + EXPIRE</span><br><span class="line">&gt; setex key 5 value</span><br><span class="line">OK</span><br><span class="line">&gt; get key</span><br><span class="line"><span class="string">&quot;value&quot;</span></span><br><span class="line">&gt; get key</span><br><span class="line">(nil)</span><br><span class="line"></span><br><span class="line">getset：为 key 设置一个值并返回原值</span><br><span class="line">&gt; <span class="built_in">set</span> key value</span><br><span class="line">OK</span><br><span class="line">&gt; getset key value1</span><br><span class="line"><span class="string">&quot;value&quot;</span></span><br><span class="line">&gt; get key</span><br><span class="line"><span class="string">&quot;value1&quot;</span></span><br><span class="line"></span><br><span class="line">incr：原子性的自增操作</span><br><span class="line">incrby：加法</span><br><span class="line">&gt; <span class="built_in">set</span> key 10</span><br><span class="line">OK</span><br><span class="line">&gt; incr key</span><br><span class="line">(<span class="built_in">integer</span>) 11</span><br><span class="line">&gt; incrby key 5</span><br><span class="line">(<span class="built_in">integer</span>) 16</span><br></pre></td></tr></table></figure>
+
+<p>（2）<strong>list(列表)</strong></p>
+<p>Redis 的列表相当于 Java 语言中的 <strong>LinkedList</strong>，注意它是链表而不是数组。这意味着 list 的插入和删除操作非常快，时间复杂度为 O(1)，但是索引定位很慢，时间复杂度为 O(n)。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">LPUSH 和 RPUSH 分别可以向 list 的左边（头部）和右边（尾部）添加一个新元素；</span><br><span class="line">LRANGE 命令可以从 list 中取出一定范围的元素；</span><br><span class="line">LINDEX 命令可以从 list 中取出指定下表的元素，相当于 Java 链表操作中的 get(int index) 操作；</span><br><span class="line"></span><br><span class="line">&gt; rpush list 1</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">&gt; rpush list 2</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br><span class="line">&gt; lpush list 10</span><br><span class="line">(<span class="built_in">integer</span>) 3</span><br><span class="line">&gt; lrange list 0 -1 <span class="comment"># -1 表示倒数第一个元素, 这里表示从第一个元素到最后一个元素，即所有</span></span><br><span class="line">1) <span class="string">&quot;10&quot;</span></span><br><span class="line">2) <span class="string">&quot;1&quot;</span></span><br><span class="line">3) <span class="string">&quot;2&quot;</span></span><br><span class="line">&gt; lindex list 0</span><br><span class="line"><span class="string">&quot;10&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>（3）<strong>hash(字典)</strong></p>
+<p>Redis 中的字典相当于 Java 中的 <strong>HashMap</strong>，内部实现也差不多类似，都是通过 <strong>“数组 + 链表”</strong> 的链地址法来解决部分 <strong>哈希冲突</strong></p>
+<p>渐进式 rehash 会在 rehash 的同时，保留新旧两个 hash 结构，查询时会同时查询两个 hash 结构，然后在后续的定时任务以及 hash 操作指令中，循序渐进的把旧字典的内容迁移到新字典中。当搬迁完成了，就会使用新的 hash 结构取而代之。</p>
+<ul>
+<li><p>渐进式rehash</p>
+</li>
+<li><p>扩缩容</p>
+</li>
+</ul>
+<p>（4）<strong>set(集合)</strong> </p>
+<p>（5）<strong>zset(有序集合)</strong></p>
+<h2 id="3、Redis"><a href="#3、Redis" class="headerlink" title="3、Redis"></a>3、Redis</h2>]]></content>
+      <categories>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+        <tag>分布式</tag>
+        <tag>缓存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法基础</title>
+    <url>/2023/09/25/algorithm_base/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -119,6 +410,161 @@
       <tags>
         <tag>todo</tag>
         <tag>分布式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>分布式配置中心</title>
+    <url>/2023/09/25/distributed_config/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+        <tag>分布式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java基础知识点</title>
+    <url>/2023/09/25/java_base/</url>
+    <content><![CDATA[<h1 id="Java学习"><a href="#Java学习" class="headerlink" title="Java学习"></a>Java学习</h1><span id="more"></span>
+
+<p>1、Java 虚拟机（JVM）是运行 Java 字节码的虚拟机。<strong>JVM 并不是只有一种！只要满足 JVM 规范，每个公司、组织或者个人都可以开发自己的专属 JVM。</strong></p>
+<ul>
+<li>JDK 是 Java Development Kit 缩写，它是功能齐全的 Java SDK。它拥有 JRE 所拥有的一切，还有编译器（javac）和工具（如 javadoc 和 jdb）。它能够创建和编译程序。</li>
+<li>JRE 是 Java 运行时环境。它是运行已编译 Java 程序所需的所有内容的集合，包括 Java 虚拟机（JVM），Java 类库，java 命令和其他的一些基础构件。但是，它不能用于创建新程序。</li>
+</ul>
+<p>2、在 Java 中，JVM 可以理解的代码就叫做字节码（即扩展名为 <code>.class</code> 的文件），它不面向任何特定的处理器，只面向虚拟机。</p>
+<p><img src="/./../images/java/java_base_1.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我们需要格外注意的是 .class-&gt;机器码 这一步。在这一步 JVM 类加载器首先加载字节码文件，然后通过解释器逐行解释执行，这种方式的执行速度会相对比较慢。而且，有些方法和代码块是经常需要被调用的(也就是所谓的热点代码)，所以后面引进了 JIT（just-in-time compilation） 编译器，而 JIT 属于运行时编译。当 JIT 编译器完成第一次编译后，其会将字节码对应的机器码保存下来，下次可以直接使用。而我们知道，机器码的运行效率肯定是高于 Java 解释器的。这也解释了我们为什么经常会说 Java 是编译与解释共存的语言 。</span><br></pre></td></tr></table></figure>
+
+<p>3、静态方法是属于类的，在类加载的时候就会分配内存，可以通过类名直接访问。而非静态成员属于实例对象，只有在对象实例化之后才存在，需要通过类的实例对象去访问。</p>
+<p>4、可变参数只能作为函数的最后一个参数，但其前面可以有也可以没有任何其他参数。</p>
+<p>5、基本类型和包装类型的区别？</p>
+<ul>
+<li>包装类型不赋值就是 <code>null</code> ，而基本类型有默认值且不是 <code>null</code>。</li>
+<li>包装类型可用于泛型，而基本类型不可以。</li>
+<li>基本数据类型的局部变量存放在 Java 虚拟机栈中的局部变量表中，基本数据类型的成员变量（未被 <code>static</code> 修饰 ）存放在 Java 虚拟机的堆中。包装类型属于对象类型，我们知道几乎所有对象实例都存在于堆中。</li>
+<li>相比于对象类型， 基本数据类型占用的空间非常小。</li>
+</ul>
+<p><strong>为什么说是几乎所有对象实例呢？</strong> 这是因为 HotSpot 虚拟机引入了 JIT 优化之后，会对对象进行逃逸分析，如果发现某一个对象并没有逃逸到方法外部，那么就可能通过标量替换来实现栈上分配，而避免堆上分配内存</p>
+<p>6、两种浮点数类型的包装类 <code>Float</code>,<code>Double</code> 并没有实现常量池技术。</p>
+<p>7、<strong>什么是自动拆装箱？</strong></p>
+<ul>
+<li><strong>装箱</strong>：将基本类型用它们对应的引用类型包装起来；</li>
+<li><strong>拆箱</strong>：将包装类型转换为基本数据类型；</li>
+</ul>
+<p>8、new 运算符，new 创建对象实例（对象实例在堆内存中），对象引用指向对象实例（对象引用存放在栈内存中）。</p>
+<p>9、面向对象三大特征</p>
+<ul>
+<li><p>封装</p>
+<p>封装是指把一个对象的状态信息（也就是属性）隐藏在对象内部，不允许外部对象直接访问对象的内部信息。但是可以提供一些可以被外界访问的方法来操作属性。就好像我们看不到挂在墙上的空调的内部的零件信息（也就是属性），但是可以通过遥控器（方法）来控制空调。如果属性不想被外界访问，我们大可不必提供方法给外界访问。但是如果一个类没有提供给外界访问的方法，那么这个类也没有什么意义了。就好像如果没有空调遥控器，那么我们就无法操控空凋制冷，空调本身就没有意义了（当然现在还有很多其他方法 ，这里只是为了举例子）。</p>
+</li>
+<li><p>继承</p>
+<p>不同类型的对象，相互之间经常有一定数量的共同点。例如，小明同学、小红同学、小李同学，都共享学生的特性（班级、学号等）。同时，每一个对象还定义了额外的特性使得他们与众不同。例如小明的数学比较好，小红的性格惹人喜爱；小李的力气比较大。继承是使用已存在的类的定义作为基础建立新类的技术，新类的定义可以增加新的数据或新的功能，也可以用父类的功能，但不能选择性地继承父类。通过使用继承，可以快速地创建新的类，可以提高代码的重用，程序的可维护性，节省大量创建新类的时间 ，提高我们的开发效率。</p>
+<p><strong>关于继承如下 3 点请记住：</strong></p>
+<ol>
+<li>子类拥有父类对象所有的属性和方法（包括私有属性和私有方法），但是父类中的私有属性和方法子类是无法访问，<strong>只是拥有</strong>。</li>
+<li>子类可以拥有自己属性和方法，即子类可以对父类进行扩展。</li>
+<li>子类可以用自己的方式实现父类的方法。（以后介绍）。</li>
+</ol>
+</li>
+<li><p>多态</p>
+<p>多态，顾名思义，表示一个对象具有多种的状态，具体表现为父类的引用指向子类的实例。</p>
+<p><strong>多态的特点:</strong></p>
+<ul>
+<li>对象类型和引用类型之间具有继承（类）&#x2F;实现（接口）的关系；</li>
+<li>引用类型变量发出的方法调用的到底是哪个类中的方法，必须在程序运行期间才能确定；</li>
+<li>多态不能调用“只在子类存在但在父类不存在”的方法；</li>
+<li>如果子类重写了父类的方法，真正执行的是子类覆盖的方法，如果子类没有覆盖父类的方法，执行的是父类的方法。</li>
+</ul>
+</li>
+</ul>
+<p>10、接口和抽象类有什么共同点和区别？</p>
+<p><strong>共同点</strong> ：</p>
+<ul>
+<li>都不能被实例化。</li>
+<li>都可以包含抽象方法。</li>
+<li>都可以有默认实现的方法（Java 8 可以用 <code>default</code> 关键在接口中定义默认方法）。</li>
+</ul>
+<p><strong>区别</strong> ：</p>
+<ul>
+<li>接口主要用于对类的行为进行约束，你实现了某个接口就具有了对应的行为。抽象类主要用于代码复用，强调的是所属关系（比如说我们抽象了一个发送短信的抽象类，）。</li>
+<li>一个类只能继承一个类，但是可以实现多个接口。</li>
+<li>接口中的成员变量只能是 <code>public static final</code> 类型的，不能被修改且必须有初始值，而抽象类的成员变量默认 default，可在子类中被重新定义，也可被重新赋值。</li>
+</ul>
+<p>区别可参考：<a href="https://tobebetterjavaer.com/oo/interface.html#_04%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB">https://tobebetterjavaer.com/oo/interface.html#_04%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB</a></p>
+<p>1）语法层面上</p>
+<ul>
+<li>抽象类可以提供成员方法的实现细节，而接口中只能存在 public abstract 方法；</li>
+<li>抽象类中的成员变量可以是各种类型的，而接口中的成员变量只能是 public static final 类型的；</li>
+<li>接口中不能含有静态代码块，而抽象类可以有静态代码块；</li>
+<li>一个类只能继承一个抽象类，而一个类却可以实现多个接口。</li>
+</ul>
+<p>2）设计层面上</p>
+<p>抽象类是对一种事物的抽象，即对类抽象，继承抽象类的子类和抽象类本身是一种 <code>is-a</code> 的关系。而接口是对行为的抽象。抽象类是对整个类整体进行抽象，包括属性、行为，但是接口却是对类局部（行为）进行抽象。</p>
+<p>举个简单的例子，飞机和鸟是不同类的事物，但是它们都有一个共性，就是都会飞。那么在设计的时候，可以将飞机设计为一个类 Airplane，将鸟设计为一个类 Bird，但是不能将 飞行 这个特性也设计为类，因此它只是一个行为特性，并不是对一类事物的抽象描述。</p>
+<p>此时可以将 飞行 设计为一个接口 Fly，包含方法 fly()，然后 Airplane 和 Bird 分别根据自己的需要实现 Fly 这个接口。然后至于有不同种类的飞机，比如战斗机、民用飞机等直接继承 Airplane 即可，对于鸟也是类似的，不同种类的鸟直接继承 Bird 类即可。从这里可以看出，继承是一个 “是不是”的关系，而 接口 实现则是 “有没有”的关系。如果一个类继承了某个抽象类，则子类必定是抽象类的种类，而接口实现则是有没有、具备不具备的关系，比如鸟是否能飞（或者是否具备飞行这个特点），能飞行则可以实现这个接口，不能飞行就不实现这个接口。</p>
+<p>接口是对类的某种行为的一种抽象，接口和类之间并没有很强的关联关系，举个例子来说，所有的类都可以实现 <code>Serializable</code> 接口)，从而具有序列化的功能，但不能说所有的类和 Serializable 之间是 <code>is-a</code> 的关系。</p>
+<p>抽象类作为很多子类的父类，它是一种模板式设计。而接口是一种行为规范，它是一种辐射式设计。什么是模板式设计？最简单例子，大家都用过 ppt 里面的模板，如果用模板 A 设计了 ppt B 和 ppt C，ppt B 和 ppt C 公共的部分就是模板 A 了，如果它们的公共部分需要改动，则只需要改动模板 A 就可以了，不需要重新对 ppt B 和 ppt C 进行改动。而辐射式设计，比如某个电梯都装了某种报警器，一旦要更新报警器，就必须全部更新。也就是说对于抽象类，如果需要添加新的方法，可以直接在抽象类中添加具体的实现，子类可以不进行变更；而对于接口则不行，如果接口进行了变更，则所有实现这个接口的类都必须进行相应的改动。</p>
+<p>11、&#x3D;&#x3D; 和 equals 区别</p>
+<p><code>==</code> 是 Java 中一种操作符，它有两种比较方式：</p>
+<ul>
+<li>对于<code>基本数据类型</code>来说， &#x3D;&#x3D; 判断的是两边的<code>值</code>是否相等</li>
+<li>对于<code>引用类型</code>来说， &#x3D;&#x3D; 判断的是两边的<code>引用</code>是否相等，也就是判断两个对象是否指向了同一块内存区域</li>
+</ul>
+<p><code>equals</code> 是 Java 中所有对象的父类，即 <code>Object</code> 类定义的一个方法。它只能比较对象，它表示的是引用双方的值是否相等。</p>
+<p>所以记住，并不是说 &#x3D;&#x3D; 比较的就是引用是否相等，equals 比较的就是值，这需要区分来说的。</p>
+<p>12、在 JDK1.7 及以后会判断运行时常量池中是否有指定的字符串，如果没有的话，就把字符串添加到常量池中，并返回常量池中的对象。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">StringOverrideEquals</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="string">&quot;aaa&quot;</span>;</span><br><span class="line">  <span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="string">&quot;aa&quot;</span> + <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">  <span class="type">String</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;aaa&quot;</span>);</span><br><span class="line"></span><br><span class="line">  System.out.println(s1.intern().equals(s1)); <span class="comment">//true，因为 s1 字符串创建出来就已经在常量池中存在了</span></span><br><span class="line">  System.out.println(s1.intern().equals(s2)); <span class="comment">//false，因为 s1 返回的是常量池中的对象，而 s2 返回的是堆中的对象</span></span><br><span class="line">  System.out.println(s3.intern().equals(s1)); <span class="comment">//true ，因为 s3 对象虽然在堆中创建了一个对象，但是 s3 中的 &quot;aaa&quot; 返回的是常量池中的对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>13、基本类型和包装类型的区别</p>
+<ul>
+<li><strong>用途</strong>：除了定义一些常量和局部变量之外，我们在其他地方比如方法参数、对象属性中很少会使用基本类型来定义变量。并且，包装类型可用于泛型，而基本类型不可以。</li>
+<li><strong>存储方式</strong>：基本数据类型的局部变量存放在 Java 虚拟机栈中的局部变量表中，基本数据类型的成员变量（未被 <code>static</code> 修饰 ）存放在 Java 虚拟机的堆中。包装类型属于对象类型，我们知道几乎所有对象实例都存在于堆中。</li>
+<li><strong>占用空间</strong>：相比于包装类型（对象类型）， 基本数据类型占用的空间往往非常小。</li>
+<li><strong>默认值</strong>：成员变量包装类型不赋值就是 <code>null</code> ，而基本类型有默认值且不是 <code>null</code>。</li>
+<li><strong>比较方式</strong>：对于基本数据类型来说，<code>==</code> 比较的是值。对于包装数据类型来说，<code>==</code> 比较的是对象的内存地址。所有整型包装类对象之间值的比较，全部使用 <code>equals()</code> 方法。</li>
+</ul>
+<p><strong>为什么说是几乎所有对象实例都存在于堆中呢？</strong> 这是因为 HotSpot 虚拟机引入了 JIT 优化之后，会对对象进行逃逸分析，如果发现某一个对象并没有逃逸到方法外部，那么就可能通过标量替换来实现栈上分配，而避免堆上分配内存</p>
+<p>⚠️ 注意：<strong>基本数据类型存放在栈中是一个常见的误区！</strong> 基本数据类型的成员变量如果没有被 <code>static</code> 修饰的话（不建议这么使用，应该要使用基本数据类型对应的包装类型），就存放在堆中。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">BasicTypeVar</span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>14、包装类型的缓存机制</p>
+<p>Java 基本数据类型的包装类型的大部分都用到了缓存机制来提升性能。</p>
+<p><code>Byte</code>,<code>Short</code>,<code>Integer</code>,<code>Long</code> 这 4 种包装类默认创建了数值 <strong>[-128，127]</strong> 的相应类型的缓存数据，<code>Character</code> 创建了数值在 <strong>[0,127]</strong> 范围的缓存数据，<code>Boolean</code> 直接返回 <code>True</code> or <code>False</code>。</p>
+<p>15、String、StringBuilder、StringBuffer</p>
+<p>每次对 <code>String</code> 类型进行改变的时候，都会生成一个新的 <code>String</code> 对象，然后将指针指向新的 <code>String</code> 对象。<code>StringBuffer</code> 每次都会对 <code>StringBuffer</code> 对象本身进行操作，而不是生成新的对象并改变对象引用。相同情况下使用 <code>StringBuilder</code> 相比使用 <code>StringBuffer</code> 仅能获得 10%~15% 左右的性能提升，但却要冒多线程不安全的风险。</p>
+<p><strong>对于三者使用的总结：</strong></p>
+<ol>
+<li>操作少量的数据: 适用 <code>String</code></li>
+<li>单线程操作字符串缓冲区下操作大量数据: 适用 <code>StringBuilder</code></li>
+<li>多线程操作字符串缓冲区下操作大量数据: 适用 <code>StringBuffer</code></li>
+</ol>
+<p>16、 <code>transient</code> 关键字</p>
+<p><code>transient</code> 关键字的作用是：阻止实例中那些用此关键字修饰的的变量序列化；当对象被反序列化时，被 <code>transient</code> 修饰的变量值不会被持久化和恢复。</p>
+<p>关于 <code>transient</code> 还有几点注意：</p>
+<ul>
+<li><code>transient</code> 只能修饰变量，不能修饰类和方法。</li>
+<li><code>transient</code> 修饰的变量，在反序列化后变量值将会被置成类型的默认值。例如，如果是修饰 <code>int</code> 类型，那么反序列后结果就是 <code>0</code>。</li>
+<li><code>static</code> 变量因为不属于任何对象(Object)，所以无论有没有 <code>transient</code> 关键字修饰，均不会被序列化。</li>
+</ul>
+<p>17、final<strong>保证可见性的前提是未发生this引用逃逸</strong>，参考：<a href="https://zhuanlan.zhihu.com/p/477481115">https://zhuanlan.zhihu.com/p/477481115</a></p>
+<p>18、<code>java</code>命令的参数，<strong>传入的是main函数所在的类的名字，而不是class文件；java会根据类名自动去找class文件</strong>。</p>
+<ul>
+<li><p>增加了package名，所以class名也变了，行不改名坐不改姓，自然要带上姓（即所谓全限定名）。</p>
+</li>
+<li><p>Java <strong>会根据包名对应出目录结构，并从class path搜索该目录去找class文件</strong>。由于默认的class path是当前目录，</p>
+</li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>（1）<a href="https://javaguide.cn/java/basis/java-basic-questions-01.html">https://javaguide.cn/java/basis/java-basic-questions-01.html</a></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -148,6 +594,95 @@
       </tags>
   </entry>
   <entry>
+    <title>分布式事务</title>
+    <url>/2023/09/25/distributed_transaction/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+        <tag>分布式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java并发</title>
+    <url>/2023/09/25/java_concurrent/</url>
+    <content><![CDATA[<h1 id="Java并发面试题"><a href="#Java并发面试题" class="headerlink" title="Java并发面试题"></a>Java并发面试题</h1><span id="more"></span>
+
+<ul>
+<li><p><strong>原子性</strong>：是指在一个操作中就是cpu不可以在中途暂停然后再调度，既不被中断操作，要不执行完成，要不就不执行。</p>
+</li>
+<li><p><strong>可见性</strong>：是指当多个线程访问同一个变量时，一个线程修改了这个变量的值，其他线程能够立即看得到修改的值。</p>
+</li>
+<li><p><strong>有序性</strong>：即程序执行的顺序按照代码的先后顺序执行。</p>
+</li>
+</ul>
+<p>内存模型解决并发问题主要采用两种方式：<strong>限制处理器优化</strong>和<strong>使用内存屏障</strong></p>
+<p>死锁的发生必须具备以下四个必要条件：</p>
+<ul>
+<li>互斥条件</li>
+<li>请求和保持条件</li>
+<li>不剥夺条件</li>
+<li>环路等待条件</li>
+</ul>
+<h1 id="1、volatile"><a href="#1、volatile" class="headerlink" title="1、volatile"></a>1、volatile</h1><ul>
+<li>可见性：被volatile修饰的变量在被修改后可以立即同步到主内存，被其修饰的变量在每次是用之前都从主内存刷新</li>
+<li>有序性：volatile可以禁止指令重排，这就保证了代码的程序会严格按照代码的先后顺序执行</li>
+</ul>
+<p>注意：volatile不能保证原子性。</p>
+<h1 id="2、同步方法与同步代码块"><a href="#2、同步方法与同步代码块" class="headerlink" title="2、同步方法与同步代码块"></a>2、同步方法与同步代码块</h1><p>对于同步方法，JVM采用<code>ACC_SYNCHRONIZED</code>标记符来实现同步。 对于同步代码块。JVM采用<code>monitorenter</code>、<code>monitorexit</code>两个指令来实现同步。</p>
+<blockquote>
+<p>Method-level synchronization is performed implicitly, as part of method invocation and return. A synchronized method is distinguished in the run-time constant pool’s method_info structure by the ACC_SYNCHRONIZED flag, which is checked by the method invocation instructions. When invoking a method for which ACC_SYNCHRONIZED is set, the executing thread enters a monitor, invokes the method itself, and exits the monitor whether the method invocation completes normally or abruptly. During the time the executing thread owns the monitor, no other thread may enter it. If an exception is thrown during invocation of the synchronized method and the synchronized method does not handle the exception, the monitor for the method is automatically exited before the exception is rethrown out of the synchronized method.</p>
+</blockquote>
+<p>主要说的是： 方法级的同步是隐式的。同步方法的常量池中会有一个<code>ACC_SYNCHRONIZED</code>标志。当某个线程要访问某个方法的时候，会检查是否有<code>ACC_SYNCHRONIZED</code>，如果有设置，则需要先获得监视器锁，然后开始执行方法，方法执行之后再释放监视器锁。这时如果其他线程来请求执行方法，会因为无法获得监视器锁而被阻断住。值得注意的是，如果在方法执行过程中，发生了异常，并且方法内部并没有处理该异常，那么在异常被抛到方法外面之前监视器锁会被自动释放。</p>
+<h1 id="3、synchronized"><a href="#3、synchronized" class="headerlink" title="3、synchronized"></a>3、synchronized</h1><p>（1）<code>synchronized</code>是Java提供的一个并发控制的关键字。主要有两种用法，分别是同步方法和同步代码块。也就是说，<code>synchronized</code>既可以修饰方法也可以修饰代码块。被<code>synchronized</code>修饰的代码块及方法，在同一时间，只能被单个线程访问。</p>
+<ul>
+<li>原子性：线程1在执行<code>monitorenter</code>指令的时候，会对Monitor进行加锁，加锁后其他线程无法获得锁，除非线程1主动解锁。即使在执行过程中，由于某种原因，比如CPU时间片用完，线程1放弃了CPU，但是，他并没有进行解锁。而由于<code>synchronized</code>的锁是可重入的，下一个时间片还是只能被他自己获取到，还是会继续执行代码。直到所有代码执行完。这就保证了原子性</li>
+<li>可见性：被<code>synchronized</code>修饰的代码，在开始执行时会加锁，执行完成后会进行解锁。而为了保证可见性，有一条规则是这样的：对一个变量解锁之前，必须先把此变量同步回主存中。这样解锁后，后续线程就可以访问到被修改后的值。所以，synchronized关键字锁住的对象，其值是具有可见性的</li>
+<li>有序性：<code>synchronized</code>是无法禁止指令重排和处理器优化的，但由于<code>as-if-serial语义</code>的限制，被<code>synchronized</code>修饰的代码，同一时间只能被同一线程访问。那么也就是单线程执行的。所以，可以保证其有序性</li>
+</ul>
+<p><code>as-if-serial语义</code>：保证了单线程中，指令重排是有一定的限制的，而只要编译器和处理器都遵守了这个语义，那么就可以认为单线程程序是按照顺序执行的。当然，实际上还是有重排的，只不过我们无须关心这种重排的干扰</p>
+<p>总结：</p>
+<ul>
+<li><code>synchronized</code> 关键字加到 <code>static</code> 静态方法和 <code>synchronized(class)</code> 代码块上都是是给 Class 类上锁；</li>
+<li><code>synchronized</code> 关键字加到实例方法上是给对象实例上锁；</li>
+<li>尽量不要使用 <code>synchronized(String a)</code> 因为 JVM 中，字符串常量池具有缓存功能。</li>
+</ul>
+<h1 id="4、-Thread-类的-run、start区别"><a href="#4、-Thread-类的-run、start区别" class="headerlink" title="4、 Thread 类的 run、start区别"></a>4、 Thread 类的 run、start区别</h1><p>new 一个 <code>Thread</code>，线程进入了新建状态。调用 <code>start()</code>方法，会启动一个线程并使线程进入了就绪状态，当分配到时间片后就可以开始运行了。 <code>start()</code> 会执行线程的相应准备工作，然后自动执行 <code>run()</code> 方法的内容，这是真正的多线程工作。 但是，直接执行 <code>run()</code> 方法，会把 <code>run()</code> 方法当成一个 main 线程下的普通方法去执行，并不会在某个线程中执行它，所以这并不是多线程工作。</p>
+<p><strong>总结：调用 <code>start()</code> 方法方可启动线程并使线程进入就绪状态，直接执行 <code>run()</code> 方法的话不会以多线程的方式执行。</strong></p>
+<h1 id="5、sleep-方法和-wait-方法对比"><a href="#5、sleep-方法和-wait-方法对比" class="headerlink" title="5、sleep() 方法和 wait() 方法对比"></a>5、sleep() 方法和 wait() 方法对比</h1><p><strong>共同点</strong>：两者都可以暂停线程的执行。</p>
+<p><strong>区别</strong>：</p>
+<ul>
+<li><strong><code>sleep()</code> 方法没有释放锁，而 <code>wait()</code> 方法释放了锁</strong> 。</li>
+<li><code>wait()</code> 通常被用于线程间交互&#x2F;通信，<code>sleep()</code>通常被用于暂停执行。</li>
+<li><code>wait()</code> 方法被调用后，线程不会自动苏醒，需要别的线程调用同一个对象上的 <code>notify()</code>或者 <code>notifyAll()</code> 方法。<code>sleep()</code>方法执行完成后，线程会自动苏醒，或者也可以使用 <code>wait(long timeout)</code> 超时后线程会自动苏醒。</li>
+<li><code>sleep()</code> 是 <code>Thread</code> 类的静态本地方法，<code>wait()</code> 则是 <code>Object</code> 类的本地方法。为什么这样设计呢？<code>wait()</code> 是让获得对象锁的线程实现等待，会自动释放当前线程占有的对象锁。每个对象（<code>Object</code>）都拥有对象锁，既然要释放当前线程占有的对象锁并让其进入 WAITING 状态，自然是要操作对应的对象（<code>Object</code>）而非当前的线程（<code>Thread</code>）。类似的问题：<strong>为什么 <code>sleep()</code> 方法定义在 <code>Thread</code> 中？</strong>因为 <code>sleep()</code> 是让当前线程暂停执行，不涉及到对象类，也不需要获得对象锁。</li>
+</ul>
+<p>#6、锁优化</p>
+<p>（1）适应性自旋锁</p>
+<p><strong>自旋锁和阻塞锁最大的区别就是，到底要不要放弃处理器的执行时间。对于阻塞锁和自旋锁来说，都是要等待获得共享资源。但是阻塞锁是放弃了CPU时间，进入了等待区，等待被唤醒。而自旋锁是一直“自旋”在那里，时刻的检查共享资源是否可以被访问。</strong></p>
+<p>由于自旋锁只是将当前线程不停地执行循环体，不进行线程状态的改变，所以响应速度更快。但当线程数不停增加时，性能下降明显，因为每个线程都需要执行，占用CPU时间。如果线程竞争不激烈，并且保持锁的时间段。适合使用自旋锁</p>
+<p>（2）锁消除</p>
+<p>在动态编译同步块的时候，JIT编译器可以借助一种被称为逃逸分析（Escape Analysis）的技术来判断同步块所使用的锁对象是否只能够被一个线程访问而没有被发布到其他线程。</p>
+<p>如果同步块所使用的锁对象通过这种分析被证实只能够被一个线程访问，那么JIT编译器在编译这个同步块的时候就会取消对这部分代码的同步。</p>
+<p>（3）锁粗化</p>
+<p>如果在一段代码中连续的对同一个对象反复加锁解锁，其实是相对耗费资源的，这种情况可以适当放宽加锁的范围，减少性能消耗。</p>
+<p>当JIT发现一系列连续的操作都对同一个对象反复加锁和解锁，甚至加锁操作出现在循环体中的时候，会将加锁同步的范围扩散（粗化）到整个操作序列的外部。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>（1）<a href="https://javaguide.cn/java/concurrent/java-concurrent-questions-01.html">https://javaguide.cn/java/concurrent/java-concurrent-questions-01.html</a></p>
+<p>遗留问题：</p>
+<p>（1）构造方法为什么是线程安全的？</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+        <tag>并发</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Zookeeper</title>
     <url>/2023/09/25/distributed_zookeeper/</url>
     <content><![CDATA[<span id="more"></span>]]></content>
@@ -160,33 +695,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Java并发</title>
-    <url>/2023/09/25/java_%20concurrent/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>todo</tag>
-        <tag>并发</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Gradle</title>
-    <url>/2023/09/25/java_%20gradle/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>todo</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java IO</title>
-    <url>/2023/09/25/java_%20io/</url>
+    <url>/2023/09/25/java_gradle/</url>
     <content><![CDATA[<span id="more"></span>]]></content>
       <categories>
         <category>Java</category>
@@ -198,43 +708,7 @@
   </entry>
   <entry>
     <title>JVM</title>
-    <url>/2023/09/25/java_%20jvm/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>todo</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java版本新特性</title>
-    <url>/2023/09/25/java_%20new_feature/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>todo</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java基础知识点</title>
-    <url>/2023/09/25/java_base/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>todo</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Maven</title>
-    <url>/2023/09/25/java_maven/</url>
+    <url>/2023/09/25/java_jvm/</url>
     <content><![CDATA[<span id="more"></span>]]></content>
       <categories>
         <category>Java</category>
@@ -259,90 +733,58 @@
   <entry>
     <title>Spring &amp; SpringBoot</title>
     <url>/2023/09/25/java_springboot/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>todo</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java线程池</title>
-    <url>/2023/09/25/java_threadpool/</url>
-    <content><![CDATA[<h1 id="线程池、连接池"><a href="#线程池、连接池" class="headerlink" title="线程池、连接池"></a>线程池、连接池</h1><span id="more"></span>
+    <content><![CDATA[<h1 id="SpringBoot学习"><a href="#SpringBoot学习" class="headerlink" title="SpringBoot学习"></a>SpringBoot学习</h1><span id="more"></span>
 
-<h1 id="1-线程池"><a href="#1-线程池" class="headerlink" title="1 线程池"></a>1 线程池</h1><h2 id="1-1-线程池介绍"><a href="#1-1-线程池介绍" class="headerlink" title="1.1 线程池介绍"></a>1.1 线程池介绍</h2><p>顾名思义，线程池就是管理一系列线程的资源池，其提供了一种限制和管理线程资源的方式。每个线程池还维护一些基本统计信息，例如已完成任务的数量。</p>
-<p>这里借用《Java 并发编程的艺术》书中的部分内容来总结一下使用线程池的好处：</p>
+<h2 id="1、IoC"><a href="#1、IoC" class="headerlink" title="1、IoC"></a>1、IoC</h2><p><strong>IoC（Inversion of Control:控制反转）</strong> 是一种设计思想，而不是一个具体的技术实现。IoC 的思想就是将原本在程序中手动创建对象的控制权，交由 Spring 框架来管理。不过， IoC 并非 Spring 特有，在其他语言中也有应用。</p>
+<p><strong>为什么叫控制反转？</strong></p>
 <ul>
-<li><strong>降低资源消耗</strong>。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。</li>
-<li><strong>提高响应速度</strong>。当任务到达时，任务可以不需要等到线程创建就能立即执行。</li>
-<li><strong>提高线程的可管理性</strong>。线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，使用线程池可以进行统一的分配，调优和监控。</li>
+<li><strong>控制</strong>：指的是对象创建（实例化、管理）的权力</li>
+<li><strong>反转</strong>：控制权交给外部环境（Spring 框架、IoC 容器）</li>
 </ul>
-<p><strong>线程池一般用于执行多个不相关联的耗时任务，没有多线程的情况下，任务顺序执行，使用了线程池的话可让多个不相关联的任务同时执行。</strong></p>
-<h2 id="1-2-Java-Executor框架"><a href="#1-2-Java-Executor框架" class="headerlink" title="1.2 Java Executor框架"></a>1.2 Java Executor框架</h2><p><code>Executor</code> 框架是 Java5 之后引进的，在 Java 5 之后，通过 <code>Executor</code> 来启动线程比使用 <code>Thread</code> 的 <code>start</code> 方法更好，除了更易管理，效率更好（用线程池实现，节约开销）外，还有关键的一点：有助于避免 this 逃逸问题。</p>
-<blockquote>
-<p>this 逃逸是指在构造函数返回之前其他线程就持有该对象的引用，调用尚未构造完全的对象的方法可能引发令人疑惑的错误。可参考：<a href="https://zhuanlan.zhihu.com/p/477481115">https://zhuanlan.zhihu.com/p/477481115</a></p>
-</blockquote>
-<hr>
-<p><code>Executor</code> 框架结构主要由三大部分组成：</p>
+<p>##2、将一个类声明为 Bean 的注解</p>
 <ul>
-<li>**任务(<code>Runnable</code> &#x2F;<code>Callable</code>)**：执行任务需要实现的 <strong><code>Runnable</code> 接口</strong> 或 <strong><code>Callable</code>接口</strong>。</li>
-<li><strong>任务的执行(<code>Executor</code>)</strong></li>
-<li><strong>异步计算的结果(<code>Future</code>)</strong></li>
+<li><code>@Component</code>：通用的注解，可标注任意类为 <code>Spring</code> 组件。如果一个 Bean 不知道属于哪个层，可以使用<code>@Component</code> 注解标注。</li>
+<li><code>@Repository</code> : 对应持久层即 Dao 层，主要用于数据库相关操作。</li>
+<li><code>@Service</code> : 对应服务层，主要涉及一些复杂的逻辑，需要用到 Dao 层。</li>
+<li><code>@Controller</code> : 对应 Spring MVC 控制层，主要用于接受用户请求并调用 <code>Service</code> 层返回数据给前端页面。</li>
 </ul>
-<h2 id="1-3-ThreadPoolExecutor-主要参数"><a href="#1-3-ThreadPoolExecutor-主要参数" class="headerlink" title="1.3 ThreadPoolExecutor 主要参数"></a>1.3 ThreadPoolExecutor 主要参数</h2><ul>
-<li><strong><code>corePoolSize</code> :</strong> 任务队列未达到队列容量时，最大可以同时运行的线程数量。</li>
-<li><strong><code>maximumPoolSize</code> :</strong> 任务队列中存放的任务达到队列容量的时候，当前可以同时运行的线程数量变为最大线程数。</li>
-<li><strong><code>workQueue</code>:</strong> 新任务来的时候会先判断当前运行的线程数量是否达到核心线程数，如果达到的话，新任务就会被存放在队列中。</li>
+<h2 id="3、-Component-和-Bean-的区别"><a href="#3、-Component-和-Bean-的区别" class="headerlink" title="3、@Component 和 @Bean 的区别"></a>3、@Component 和 @Bean 的区别</h2><ul>
+<li><code>@Component</code> 注解作用于类，而<code>@Bean</code>注解作用于方法。</li>
+<li><code>@Component</code>通常是通过类路径扫描来自动侦测以及自动装配到 Spring 容器中（我们可以使用 <code>@ComponentScan</code> 注解定义要扫描的路径从中找出标识了需要装配的类自动装配到 Spring 的 bean 容器中）。<code>@Bean</code> 注解通常是我们在标有该注解的方法中定义产生这个 bean,<code>@Bean</code>告诉了 Spring 这是某个类的实例，当我需要用它的时候还给我。</li>
+<li><code>@Bean</code> 注解比 <code>@Component</code> 注解的自定义性更强，而且很多地方我们只能通过 <code>@Bean</code> 注解来注册 bean。比如当我们引用第三方库中的类需要装配到 <code>Spring</code>容器时，则只能通过 <code>@Bean</code>来实现。</li>
 </ul>
-<p><code>ThreadPoolExecutor</code>其他常见参数 :</p>
+<p>##4、@Autowired 和 @Resource 的区别是什么？</p>
 <ul>
-<li><strong><code>keepAliveTime</code></strong>:线程池中的线程数量大于 <code>corePoolSize</code> 的时候，如果这时没有新的任务提交，核心线程外的线程不会立即销毁，而是会等待，直到等待的时间超过了 <code>keepAliveTime</code>才会被回收销毁。</li>
-<li><strong><code>unit</code></strong> : <code>keepAliveTime</code> 参数的时间单位。</li>
-<li><strong><code>threadFactory</code></strong> :executor 创建新线程的时候会用到。</li>
-<li><strong><code>handler</code></strong> :饱和策略。</li>
+<li><code>@Autowired</code> 是 Spring 提供的注解，<code>@Resource</code> 是 JDK 提供的注解。</li>
+<li><code>Autowired</code> 默认的注入方式为<code>byType</code>（根据类型进行匹配），<code>@Resource</code>默认注入方式为 <code>byName</code>（根据名称进行匹配）。</li>
+<li>当一个接口存在多个实现类的情况下，<code>@Autowired</code> 和<code>@Resource</code>都需要通过名称才能正确匹配到对应的 Bean。<code>Autowired</code> 可以通过 <code>@Qualifier</code> 注解来显式指定名称，<code>@Resource</code>可以通过 <code>name</code> 属性来显式指定名称。</li>
+<li><code>@Autowired</code> 支持在构造函数、方法、字段和参数上使用。<code>@Resource</code> 主要用于字段和方法上的注入，不支持在构造函数或参数上使用。</li>
 </ul>
-<h2 id="1-4-饱和策略"><a href="#1-4-饱和策略" class="headerlink" title="1.4 饱和策略"></a>1.4 饱和策略</h2><p>如果当前同时运行的线程数量达到最大线程数量并且队列也已经被放满了任务时，<code>ThreadPoolTaskExecutor</code> 定义一些策略:</p>
+<h2 id="5、AOP"><a href="#5、AOP" class="headerlink" title="5、AOP"></a>5、AOP</h2><p>AOP(Aspect-Oriented Programming:面向切面编程)能够将那些与业务无关，却为业务模块所共同调用的逻辑或责任（例如事务处理、日志管理、权限控制等）封装起来，便于减少系统的重复代码，降低模块间的耦合度，并有利于未来的可拓展性和可维护性。</p>
+<p>Spring AOP 就是基于动态代理的，如果要代理的对象，实现了某个接口，那么 Spring AOP 会使用 <strong>JDK Proxy</strong>（底层通过反射实现）或者CGLIB的动态代理（底层通过继承实现），去创建代理对象，而对于没有实现接口的对象，就无法使用 JDK Proxy 去进行代理了，这时候 Spring AOP 会使用 <strong>Cglib</strong> 生成一个被代理对象的子类来作为代理。</p>
+<h2 id="6、Spring-AOP-和-AspectJ-AOP-区别"><a href="#6、Spring-AOP-和-AspectJ-AOP-区别" class="headerlink" title="6、Spring AOP 和 AspectJ AOP 区别"></a>6、Spring AOP 和 AspectJ AOP 区别</h2><p><strong>Spring AOP 属于运行时增强，而 AspectJ 是编译时增强。</strong> Spring AOP 基于代理(Proxying)，而 AspectJ 基于字节码操作(Bytecode Manipulation)。</p>
+<p>Spring AOP 已经集成了 AspectJ ，AspectJ 应该算的上是 Java 生态系统中最完整的 AOP 框架了。AspectJ 相比于 Spring AOP 功能更加强大，但是 Spring AOP 相对来说更简单，</p>
+<p>如果我们的切面比较少，那么两者性能差异不大。但是，当切面太多的话，最好选择 AspectJ ，它比 Spring AOP 快很多。</p>
+<h2 id="7、自动装配"><a href="#7、自动装配" class="headerlink" title="7、自动装配"></a>7、自动装配</h2><p><code>@SpringBootApplication</code>看作是 <code>@Configuration</code>、<code>@EnableAutoConfiguration</code>、<code>@ComponentScan</code> 注解的集合。根据 SpringBoot 官网，这三个注解的作用分别是：</p>
 <ul>
-<li>**<code>ThreadPoolExecutor.AbortPolicy</code>**：抛出 <code>RejectedExecutionException</code>来拒绝新任务的处理。</li>
-<li>**<code>ThreadPoolExecutor.CallerRunsPolicy</code>**：调用执行自己的线程运行任务，也就是直接在调用<code>execute</code>方法的线程中运行(<code>run</code>)被拒绝的任务，如果执行程序已关闭，则会丢弃该任务。因此这种策略会降低对于新任务提交速度，影响程序的整体性能。如果您的应用程序可以承受此延迟并且你要求任何一个任务请求都要被执行的话，你可以选择这个策略。</li>
-<li>**<code>ThreadPoolExecutor.DiscardPolicy</code>**：不处理新任务，直接丢弃掉。</li>
-<li>**<code>ThreadPoolExecutor.DiscardOldestPolicy</code>**：此策略将丢弃最早的未处理的任务请求。</li>
+<li><code>@EnableAutoConfiguration</code>：启用 SpringBoot 的自动配置机制。通过 SpringFactoriesLoader 最终加载<code>META-INF/spring.factories</code>中的自动配置类实现自动装配，自动配置类其实就是通过<code>@Conditional</code>按需加载的配置类，想要其生效必须引入<code>spring-boot-starter-xxx</code>包实现起步依赖</li>
+<li><code>@Configuration</code>：允许在上下文中注册额外的 bean 或导入其他配置类</li>
+<li><code>@ComponentScan</code>：扫描被<code>@Component</code> (<code>@Service</code>,<code>@Controller</code>)注解的 bean，注解默认会扫描启动类所在的包下所有的类 ，可以自定义不扫描某些 bean。如下图所示，容器中将排除<code>TypeExcludeFilter</code>和<code>AutoConfigurationExcludeFilter</code>。</li>
 </ul>
-<h2 id="1-5-线程池创建方式"><a href="#1-5-线程池创建方式" class="headerlink" title="1.5 线程池创建方式"></a>1.5 线程池创建方式</h2><p>（1）<strong>通过<code>ThreadPoolExecutor</code>构造函数来创建（推荐）</strong></p>
-<p>（2）<strong>通过 <code>Executor</code> 框架的工具类 <code>Executors</code> 来创建。</strong></p>
-<p>我们可以创建多种类型的 <code>ThreadPoolExecutor</code>：</p>
+<p>##8、Spring 框架中用到的设计模式</p>
 <ul>
-<li>**<code>FixedThreadPool</code>**：该方法返回一个固定线程数量的线程池。该线程池中的线程数量始终不变。当有一个新的任务提交时，线程池中若有空闲线程，则立即执行。若没有，则新的任务会被暂存在一个任务队列中，待有线程空闲时，便处理在任务队列中的任务。</li>
-<li><strong><code>SingleThreadExecutor</code>：</strong> 该方法返回一个只有一个线程的线程池。若多余一个任务被提交到该线程池，任务会被保存在一个任务队列中，待线程空闲，按先入先出的顺序执行队列中的任务。</li>
-<li><strong><code>CachedThreadPool</code>：</strong> 该方法返回一个可根据实际情况调整线程数量的线程池。线程池的线程数量不确定，但若有空闲线程可以复用，则会优先使用可复用的线程。若所有线程均在工作，又有新的任务提交，则会创建新的线程处理任务。所有线程在当前任务执行完毕后，将返回线程池进行复用。</li>
-<li>**<code>ScheduledThreadPool</code>**：该返回一个用来在给定的延迟后运行任务或者定期执行任务的线程池。</li>
+<li><strong>工厂设计模式</strong> : Spring 使用工厂模式通过 <code>BeanFactory</code>、<code>ApplicationContext</code> 创建 bean 对象。</li>
+<li><strong>代理设计模式</strong> : Spring AOP 功能的实现。</li>
+<li><strong>单例设计模式</strong> : Spring 中的 Bean 默认都是单例的。</li>
+<li><strong>模板方法模式</strong> : Spring 中 <code>jdbcTemplate</code>、<code>hibernateTemplate</code> 等以 Template 结尾的对数据库操作的类，它们就使用到了模板模式。</li>
+<li><strong>包装器设计模式</strong> : 我们的项目需要连接多个数据库，而且不同的客户在每次访问中根据需要会去访问不同的数据库。这种模式让我们可以根据客户的需求能够动态切换不同的数据源。</li>
+<li><strong>观察者模式:</strong> Spring 事件驱动模型就是观察者模式很经典的一个应用。</li>
+<li><strong>适配器模式</strong> :Spring AOP 的增强或通知(Advice)使用到了适配器模式、spring MVC 中也是用到了适配器模式适配<code>Controller</code>。</li>
+<li>……</li>
 </ul>
-<p>注：《阿里巴巴 Java 开发手册》强制线程池不允许使用 <code>Executors</code> 去创建，而是通过 <code>ThreadPoolExecutor</code> 构造函数的方式，这样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险（<code>Executors</code>创建的线程池，队列长度为Interger.MAX_VALUE，可能堆积大量的请求，导致 OOM）。</p>
-<h2 id="1-6-阻塞队列"><a href="#1-6-阻塞队列" class="headerlink" title="1.6 阻塞队列"></a>1.6 阻塞队列</h2><p>不同的线程池会选用不同的阻塞队列，我们可以结合内置线程池来分析。</p>
-<ul>
-<li>容量为 <code>Integer.MAX_VALUE</code> 的 <code>LinkedBlockingQueue</code>（无界队列）：<code>FixedThreadPool</code> 和 <code>SingleThreadExector</code> 。由于队列永远不会被放满，因此<code>FixedThreadPool</code>最多只能创建核心线程数的线程。</li>
-<li><code>SynchronousQueue</code>（同步队列）：<code>CachedThreadPool</code> 。<code>SynchronousQueue</code> 没有容量，不存储元素，目的是保证对于提交的任务，如果有空闲线程，则使用空闲线程来处理；否则新建一个线程来处理任务。也就是说，<code>CachedThreadPool</code> 的最大线程数是 <code>Integer.MAX_VALUE</code> ，可以理解为线程数是可以无限扩展的，可能会创建大量线程，从而导致 OOM。</li>
-<li><code>DelayedWorkQueue</code>（延迟阻塞队列）：<code>ScheduledThreadPool</code> 和 <code>SingleThreadScheduledExecutor</code> 。<code>DelayedWorkQueue</code> 的内部元素并不是按照放入的时间排序，而是会按照延迟的时间长短对任务进行排序，内部采用的是“堆”的数据结构，可以保证每次出队的任务都是当前队列中执行时间最靠前的。<code>DelayedWorkQueue</code> 添加元素满了之后会自动扩容原来容量的 1&#x2F;2，即永远不会阻塞，最大扩容可达 <code>Integer.MAX_VALUE</code>，所以最多只能创建核心线程数的线程。</li>
-</ul>
-<h2 id="1-7-Runnable-vs-Callable"><a href="#1-7-Runnable-vs-Callable" class="headerlink" title="1.7 Runnable vs Callable"></a>1.7 <code>Runnable</code> vs <code>Callable</code></h2><p><code>Runnable</code>自 Java 1.0 以来一直存在，但<code>Callable</code>仅在 Java 1.5 中引入,目的就是为了来处理<code>Runnable</code>不支持的用例。**<code>Runnable</code> 接口**不会返回结果或抛出检查异常，但是 <strong><code>Callable</code> 接口</strong>可以。所以，如果任务不需要返回结果或抛出异常推荐使用 <strong><code>Runnable</code> 接口</strong>，这样代码看起来会更加简洁。</p>
-<h2 id="1-8-execute-vs-submit"><a href="#1-8-execute-vs-submit" class="headerlink" title="1.8  execute() vs submit()"></a>1.8  <code>execute()</code> vs <code>submit()</code></h2><ul>
-<li><code>execute()</code>方法用于提交不需要返回值的任务，所以无法判断任务是否被线程池执行成功与否；</li>
-<li><code>submit()</code>方法用于提交需要返回值的任务。线程池会返回一个 <code>Future</code> 类型的对象，通过这个 <code>Future</code> 对象可以判断任务是否执行成功，并且可以通过 <code>Future</code> 的 <code>get()</code>方法来获取返回值，<code>get()</code>方法会阻塞当前线程直到任务完成，而使用 <code>get（long timeout，TimeUnit unit）</code>方法的话，如果在 <code>timeout</code> 时间内任务还没有执行完，就会抛出 <code>java.util.concurrent.TimeoutException</code>。</li>
-</ul>
-<h2 id="1-9-shutdown-VSshutdownNow"><a href="#1-9-shutdown-VSshutdownNow" class="headerlink" title="1.9  shutdown()VSshutdownNow()"></a>1.9  <code>shutdown()</code>VS<code>shutdownNow()</code></h2><ul>
-<li><strong><code>shutdown（）</code></strong> :关闭线程池，线程池的状态变为 <code>SHUTDOWN</code>。线程池不再接受新任务了，但是队列里的任务得执行完毕。</li>
-<li><strong><code>shutdownNow（）</code></strong> :关闭线程池，线程池的状态变为 <code>STOP</code>。线程池会终止当前正在运行的任务，并停止处理排队的任务并返回正在等待执行的 List。</li>
-</ul>
-<h2 id="1-10-isTerminated-VS-isShutdown"><a href="#1-10-isTerminated-VS-isShutdown" class="headerlink" title="1.10  isTerminated() VS isShutdown()"></a>1.10  <code>isTerminated()</code> VS <code>isShutdown()</code></h2><ul>
-<li><strong><code>isShutDown</code></strong> 当调用 <code>shutdown()</code> 方法后返回为 true。</li>
-<li><strong><code>isTerminated</code></strong> 当调用 <code>shutdown()</code> 方法后，并且所有提交的任务完成后返回为 true</li>
-</ul>
-<h2 id="1-11-线程池和-ThreadLocal"><a href="#1-11-线程池和-ThreadLocal" class="headerlink" title="1.11 线程池和 ThreadLocal"></a>1.11 线程池和 ThreadLocal</h2><p>线程池和 <code>ThreadLocal</code>共用，可能会导致线程从<code>ThreadLocal</code>获取到的是旧值&#x2F;脏数据。这是因为线程池会复用线程对象，与线程对象绑定的类的静态属性 <code>ThreadLocal</code> 变量也会被重用，这就导致一个线程可能获取到其他线程的<code>ThreadLocal</code> 值。</p>
-<p>可考虑使用<code>TransmittableThreadLocal</code>， 项目地址：<a href="https://github.com/alibaba/transmittable-thread-local">https://github.com/alibaba/transmittable-thread-local</a> 。</p>
-<h1 id="2-连接池"><a href="#2-连接池" class="headerlink" title="2 连接池"></a>2 连接池</h1><h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p>（1）<a href="https://javaguide.cn/java/concurrent/java-thread-pool-summary.html">https://javaguide.cn/java/concurrent/java-thread-pool-summary.html</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>1、<a href="https://javaguide.cn/system-design/framework/spring/spring-knowledge-and-questions-summary.html">https://javaguide.cn/system-design/framework/spring/spring-knowledge-and-questions-summary.html</a></p>
+<p>todo：</p>
+<p>（1）cglib实现原理？</p>
 ]]></content>
       <categories>
         <category>Java</category>
@@ -362,6 +804,90 @@
       <tags>
         <tag>todo</tag>
         <tag>k8s</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java线程池</title>
+    <url>/2023/09/25/java_threadpool/</url>
+    <content><![CDATA[<h2 id="1-线程池介绍"><a href="#1-线程池介绍" class="headerlink" title="1. 线程池介绍"></a>1. 线程池介绍</h2><p>顾名思义，线程池就是管理一系列线程的资源池，其提供了一种限制和管理线程资源的方式。每个线程池还维护一些基本统计信息，例如已完成任务的数量。</p>
+<span id="more"></span>
+
+<p>这里借用《Java 并发编程的艺术》书中的部分内容来总结一下使用线程池的好处：</p>
+<ul>
+<li><strong>降低资源消耗</strong>。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。</li>
+<li><strong>提高响应速度</strong>。当任务到达时，任务可以不需要等到线程创建就能立即执行。</li>
+<li><strong>提高线程的可管理性</strong>。线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，使用线程池可以进行统一的分配，调优和监控。</li>
+</ul>
+<p><strong>线程池一般用于执行多个不相关联的耗时任务，没有多线程的情况下，任务顺序执行，使用了线程池的话可让多个不相关联的任务同时执行。</strong></p>
+<h2 id="2-Java-Executor框架"><a href="#2-Java-Executor框架" class="headerlink" title="2. Java Executor框架"></a>2. Java Executor框架</h2><p><code>Executor</code> 框架是 Java5 之后引进的，在 Java 5 之后，通过 <code>Executor</code> 来启动线程比使用 <code>Thread</code> 的 <code>start</code> 方法更好，除了更易管理，效率更好（用线程池实现，节约开销）外，还有关键的一点：有助于避免 this 逃逸问题。</p>
+<blockquote>
+<p>this 逃逸是指在构造函数返回之前其他线程就持有该对象的引用，调用尚未构造完全的对象的方法可能引发令人疑惑的错误。可参考：<a href="https://zhuanlan.zhihu.com/p/477481115">https://zhuanlan.zhihu.com/p/477481115</a></p>
+</blockquote>
+<hr>
+<p><code>Executor</code> 框架结构主要由三大部分组成：</p>
+<ul>
+<li>任务(<code>Runnable</code>&#x2F;<code>Callable</code>)：执行任务需要实现的 <code>Runnable</code> 接口 或 <code>Callable</code>接口。</li>
+<li>任务的执行(<code>Executor</code>)</li>
+<li>异步计算的结果(<code>Future</code>)</li>
+</ul>
+<h2 id="3-ThreadPoolExecutor-主要参数"><a href="#3-ThreadPoolExecutor-主要参数" class="headerlink" title="3. ThreadPoolExecutor 主要参数"></a>3. ThreadPoolExecutor 主要参数</h2><ul>
+<li><code>corePoolSize</code>: 任务队列未达到队列容量时，最大可以同时运行的线程数量。</li>
+<li><code>maximumPoolSize</code>: 任务队列中存放的任务达到队列容量的时候，当前可以同时运行的线程数量变为最大线程数。</li>
+<li><code>workQueue</code>: 新任务来的时候会先判断当前运行的线程数量是否达到核心线程数，如果达到的话，新任务就会被存放在队列中。</li>
+</ul>
+<p><code>ThreadPoolExecutor</code>其他常见参数 :</p>
+<ul>
+<li><code>keepAliveTime</code>:线程池中的线程数量大于 <code>corePoolSize</code> 的时候，如果这时没有新的任务提交，核心线程外的线程不会立即销毁，而是会等待，直到等待的时间超过了 <code>keepAliveTime</code>才会被回收销毁。</li>
+<li><code>unit</code> : <code>keepAliveTime</code> 参数的时间单位。</li>
+<li><code>threadFactory</code> :executor 创建新线程的时候会用到。</li>
+<li><code>handler</code> :饱和策略。</li>
+</ul>
+<h2 id="4-饱和策略"><a href="#4-饱和策略" class="headerlink" title="4. 饱和策略"></a>4. 饱和策略</h2><p>如果当前同时运行的线程数量达到最大线程数量并且队列也已经被放满了任务时，<code>ThreadPoolTaskExecutor</code> 定义一些策略:</p>
+<ul>
+<li><code>ThreadPoolExecutor.AbortPolicy</code>：抛出 <code>RejectedExecutionException</code>来拒绝新任务的处理。</li>
+<li><code>ThreadPoolExecutor.CallerRunsPolicy</code>：调用执行自己的线程运行任务，也就是直接在调用<code>execute</code>方法的线程中运行(<code>run</code>)被拒绝的任务，如果执行程序已关闭，则会丢弃该任务。因此这种策略会降低对于新任务提交速度，影响程序的整体性能。如果您的应用程序可以承受此延迟并且你要求任何一个任务请求都要被执行的话，你可以选择这个策略。</li>
+<li><code>ThreadPoolExecutor.DiscardPolicy</code>：不处理新任务，直接丢弃掉。</li>
+<li><code>ThreadPoolExecutor.DiscardOldestPolicy</code>：此策略将丢弃最早的未处理的任务请求。</li>
+</ul>
+<h2 id="5-线程池创建方式"><a href="#5-线程池创建方式" class="headerlink" title="5. 线程池创建方式"></a>5. 线程池创建方式</h2><p>（1）通过<code>ThreadPoolExecutor</code>构造函数来创建（推荐）</p>
+<p>（2）通过 <code>Executor</code> 框架的工具类 <code>Executors</code> 来创建。</p>
+<p>我们可以创建多种类型的 <code>ThreadPoolExecutor</code>：</p>
+<ul>
+<li><code>FixedThreadPool</code>：该方法返回一个固定线程数量的线程池。该线程池中的线程数量始终不变。当有一个新的任务提交时，线程池中若有空闲线程，则立即执行。若没有，则新的任务会被暂存在一个任务队列中，待有线程空闲时，便处理在任务队列中的任务。</li>
+<li><code>SingleThreadExecutor</code>： 该方法返回一个只有一个线程的线程池。若多余一个任务被提交到该线程池，任务会被保存在一个任务队列中，待线程空闲，按先入先出的顺序执行队列中的任务。</li>
+<li><code>CachedThreadPool</code>： 该方法返回一个可根据实际情况调整线程数量的线程池。线程池的线程数量不确定，但若有空闲线程可以复用，则会优先使用可复用的线程。若所有线程均在工作，又有新的任务提交，则会创建新的线程处理任务。所有线程在当前任务执行完毕后，将返回线程池进行复用。</li>
+<li><code>ScheduledThreadPool</code>：该返回一个用来在给定的延迟后运行任务或者定期执行任务的线程池。</li>
+</ul>
+<p>注：《阿里巴巴 Java 开发手册》强制线程池不允许使用 <code>Executors</code> 去创建，而是通过 <code>ThreadPoolExecutor</code> 构造函数的方式，这样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险（<code>Executors</code>创建的线程池，队列长度为Interger.MAX_VALUE，可能堆积大量的请求，导致 OOM）。</p>
+<h2 id="6-阻塞队列"><a href="#6-阻塞队列" class="headerlink" title="6. 阻塞队列"></a>6. 阻塞队列</h2><p>不同的线程池会选用不同的阻塞队列，我们可以结合内置线程池来分析。</p>
+<ul>
+<li>容量为 <code>Integer.MAX_VALUE</code> 的 <code>LinkedBlockingQueue</code>（无界队列）：<code>FixedThreadPool</code> 和 <code>SingleThreadExector</code> 。由于队列永远不会被放满，因此<code>FixedThreadPool</code>最多只能创建核心线程数的线程。</li>
+<li><code>SynchronousQueue</code>（同步队列）：<code>CachedThreadPool</code> 。<code>SynchronousQueue</code> 没有容量，不存储元素，目的是保证对于提交的任务，如果有空闲线程，则使用空闲线程来处理；否则新建一个线程来处理任务。也就是说，<code>CachedThreadPool</code> 的最大线程数是 <code>Integer.MAX_VALUE</code> ，可以理解为线程数是可以无限扩展的，可能会创建大量线程，从而导致 OOM。</li>
+<li><code>DelayedWorkQueue</code>（延迟阻塞队列）：<code>ScheduledThreadPool</code> 和 <code>SingleThreadScheduledExecutor</code> 。<code>DelayedWorkQueue</code> 的内部元素并不是按照放入的时间排序，而是会按照延迟的时间长短对任务进行排序，内部采用的是“堆”的数据结构，可以保证每次出队的任务都是当前队列中执行时间最靠前的。<code>DelayedWorkQueue</code> 添加元素满了之后会自动扩容原来容量的 1&#x2F;2，即永远不会阻塞，最大扩容可达 <code>Integer.MAX_VALUE</code>，所以最多只能创建核心线程数的线程。</li>
+</ul>
+<h2 id="7-Runnable-vs-Callable"><a href="#7-Runnable-vs-Callable" class="headerlink" title="7. Runnable vs Callable"></a>7. <code>Runnable</code> vs <code>Callable</code></h2><p><code>Runnable</code>自 Java 1.0 以来一直存在，但<code>Callable</code>仅在 Java 1.5 中引入,目的就是为了来处理<code>Runnable</code>不支持的用例。<code>Runnable</code> 接口不会返回结果或抛出检查异常，但是 <code>Callable</code> 接口可以。所以，如果任务不需要返回结果或抛出异常推荐使用 <code>Runnable</code> 接口，这样代码看起来会更加简洁。</p>
+<h2 id="8-execute-vs-submit"><a href="#8-execute-vs-submit" class="headerlink" title="8.  execute() vs submit()"></a>8.  <code>execute()</code> vs <code>submit()</code></h2><ul>
+<li><code>execute()</code>方法用于提交不需要返回值的任务，所以无法判断任务是否被线程池执行成功与否；</li>
+<li><code>submit()</code>方法用于提交需要返回值的任务。线程池会返回一个 <code>Future</code> 类型的对象，通过这个 <code>Future</code> 对象可以判断任务是否执行成功，并且可以通过 <code>Future</code> 的 <code>get()</code>方法来获取返回值，<code>get()</code>方法会阻塞当前线程直到任务完成，而使用 <code>get（long timeout，TimeUnit unit）</code>方法的话，如果在 <code>timeout</code> 时间内任务还没有执行完，就会抛出 <code>java.util.concurrent.TimeoutException</code>。</li>
+</ul>
+<h2 id="9-shutdown-vs-shutdownNow"><a href="#9-shutdown-vs-shutdownNow" class="headerlink" title="9.  shutdown() vs shutdownNow()"></a>9.  <code>shutdown()</code> vs <code>shutdownNow()</code></h2><ul>
+<li><code>shutdown（）</code> :关闭线程池，线程池的状态变为 <code>SHUTDOWN</code>。线程池不再接受新任务了，但是队列里的任务得执行完毕。</li>
+<li><code>shutdownNow（）</code> :关闭线程池，线程池的状态变为 <code>STOP</code>。线程池会终止当前正在运行的任务，并停止处理排队的任务并返回正在等待执行的 List。</li>
+</ul>
+<h2 id="10-isTerminated-vs-isShutdown"><a href="#10-isTerminated-vs-isShutdown" class="headerlink" title="10.  isTerminated() vs isShutdown()"></a>10.  <code>isTerminated()</code> vs <code>isShutdown()</code></h2><ul>
+<li><code>isShutDown</code> 当调用 <code>shutdown()</code> 方法后返回为 true。</li>
+<li><code>isTerminated</code> 当调用 <code>shutdown()</code> 方法后，并且所有提交的任务完成后返回为 true</li>
+</ul>
+<h2 id="11-线程池和-ThreadLocal"><a href="#11-线程池和-ThreadLocal" class="headerlink" title="11. 线程池和 ThreadLocal"></a>11. 线程池和 ThreadLocal</h2><p>线程池和 <code>ThreadLocal</code>共用，可能会导致线程从<code>ThreadLocal</code>获取到的是旧值&#x2F;脏数据。这是因为线程池会复用线程对象，与线程对象绑定的类的静态属性 <code>ThreadLocal</code> 变量也会被重用，这就导致一个线程可能获取到其他线程的<code>ThreadLocal</code> 值。</p>
+<p>可考虑使用<code>TransmittableThreadLocal</code>， 项目地址：<a href="https://github.com/alibaba/transmittable-thread-local">https://github.com/alibaba/transmittable-thread-local</a> 。</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p>（1）<a href="https://javaguide.cn/java/concurrent/java-thread-pool-summary.html">https://javaguide.cn/java/concurrent/java-thread-pool-summary.html</a></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -387,6 +913,71 @@
       <tags>
         <tag>todo</tag>
         <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java版本新特性</title>
+    <url>/2023/09/25/java_new_feature/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java IO</title>
+    <url>/2023/09/25/java_io/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Maven</title>
+    <url>/2023/09/25/java_maven/</url>
+    <content><![CDATA[<h1 id="Maven学习"><a href="#Maven学习" class="headerlink" title="Maven学习"></a>Maven学习</h1><span id="more"></span>
+
+<h2 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h2><p>对于开发者来说，Maven 的主要作用主要有 3 个： </p>
+<ul>
+<li>项目构建：提供标准的、跨平台的自动化项目构建方式。</li>
+<li>依赖管理：方便快捷的管理项目依赖的资源（jar 包），避免资源间的版本冲突问题。</li>
+<li>统一开发结构：提供标准的、统一的项目结构。</li>
+</ul>
+<h2 id="2、Maven-的依赖范围"><a href="#2、Maven-的依赖范围" class="headerlink" title="2、Maven 的依赖范围"></a>2、Maven 的依赖范围</h2><ul>
+<li><strong>compile</strong>：编译依赖范围（默认），使用此依赖范围对于编译、测试、运行三种都有效，即在编译、测试和运行的时候都要使用该依赖 Jar 包。</li>
+<li><strong>test</strong>：测试依赖范围，从字面意思就可以知道此依赖范围只能用于测试，而在编译和运行项目时无法使用此类依赖，典型的是 JUnit，它只用于编译测试代码和运行测试代码的时候才需要。</li>
+<li><strong>provided</strong>：此依赖范围，对于编译和测试有效，而对运行时无效。比如 <code>servlet-api.jar</code> 在 Tomcat 中已经提供了，我们只需要的是编译期提供而已。</li>
+<li><strong>runtime</strong>：运行时依赖范围，对于测试和运行有效，但是在编译主代码时无效，典型的就是 JDBC 驱动实现。</li>
+<li><strong>system</strong>：系统依赖范围，使用 system 范围的依赖时必须通过 systemPath 元素显示地指定依赖文件的路径，不依赖 Maven 仓库解析，所以可能会造成建构的不可移植。</li>
+</ul>
+<h2 id="3、Maven-依赖调解"><a href="#3、Maven-依赖调解" class="headerlink" title="3、Maven 依赖调解"></a>3、<strong>Maven 依赖调解</strong></h2><p>Maven 在遇到这种问题的时候，会遵循 <strong>路径最短优先</strong> 和 <strong>声明顺序优先</strong> 两大原则。</p>
+<h2 id="4、Maven生命周期"><a href="#4、Maven生命周期" class="headerlink" title="4、Maven生命周期"></a>4、Maven生命周期</h2><p>Maven 定义了 3 个生命周期<code>META-INF/plexus/components.xml</code>：</p>
+<ul>
+<li><p><code>default</code> 生命周期</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">phases</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 验证项目是否正确，并且所有必要的信息可用于完成构建过程 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>validate<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 建立初始化状态，例如设置属性 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>initialize<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 生成要包含在编译阶段的源代码 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>generate-sources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 处理源代码 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>process-sources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 生成要包含在包中的资源 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>generate-resources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 将资源复制并处理到目标目录中，为打包阶段做好准备。 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>process-resources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 编译项目的源代码  --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 对编译生成的文件进行后处理，例如对 Java 类进行字节码增强/优化 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>process-classes<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 生成要包含在编译阶段的任何测试源代码 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>generate-test-sources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 处理测试源代码 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>process-test-sources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 生成要包含在编译阶段的测试源代码 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>generate-test-resources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 处理从测试代码文件编译生成的文件 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>process-test-resources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 编译测试源代码 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>test-compile<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 处理从测试代码文件编译生成的文件 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>process-test-classes<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 使用合适的单元测试框架（Junit 就是其中之一）运行测试 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>test<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 在实际打包之前，执行任何的必要的操作为打包做准备 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>prepare-package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 获取已编译的代码并将其打包成可分发的格式，例如 JAR、WAR 或 EAR 文件 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 在执行集成测试之前执行所需的操作。 例如，设置所需的环境 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>pre-integration-test<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 处理并在必要时部署软件包到集成测试可以运行的环境 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>integration-test<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 执行集成测试后执行所需的操作。 例如，清理环境  --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>post-integration-test<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 运行任何检查以验证打的包是否有效并符合质量标准。 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>verify<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 	将包安装到本地仓库中，可以作为本地其他项目的依赖 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>install<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 将最终的项目包复制到远程仓库中与其他开发者和项目共享 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">phase</span>&gt;</span>deploy<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">phases</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>clean</code>生命周期</p>
+</li>
+<li><p><code>site</code>生命周期</p>
+</li>
+</ul>
+<p>todo：</p>
+<p>（1）<strong>provided</strong>依赖的包是否会打入最后的jar包？理论上不会，但是使用spring-boot-maven-plugin为了保证jar包能独立运行，最终仍会打包进去，有待验证。</p>
+<p>（2）Gradle学习？</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
 </search>
