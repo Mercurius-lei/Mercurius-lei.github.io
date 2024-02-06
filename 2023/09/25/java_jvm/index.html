@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>JVM - 蓉的个人博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="蓉蓉"><meta name="msapplication-TileImage" content="/images/lr.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="蓉蓉"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content=""><meta property="og:type" content="blog"><meta property="og:title" content="JVM"><meta property="og:url" content="http://mercurius-lei.github.io/2023/09/25/java_jvm/"><meta property="og:site_name" content="蓉的个人博客"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://mercurius-lei.github.io/img/og_image.png"><meta property="article:published_time" content="2023-09-25T10:15:11.142Z"><meta property="article:modified_time" content="2023-09-25T11:30:15.714Z"><meta property="article:author" content="lei.ch1941"><meta property="article:tag" content="todo"><meta property="article:tag" content="Java"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://mercurius-lei.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://mercurius-lei.github.io/2023/09/25/java_jvm/"},"headline":"JVM","image":["http://mercurius-lei.github.io/img/og_image.png"],"datePublished":"2023-09-25T10:15:11.142Z","dateModified":"2023-09-25T11:30:15.714Z","author":{"@type":"Person","name":"lei.ch1941"},"publisher":{"@type":"Organization","name":"蓉的个人博客","logo":{"@type":"ImageObject","url":"http://mercurius-lei.github.io/images/lr.svg"}},"description":""}</script><link rel="canonical" href="http://mercurius-lei.github.io/2023/09/25/java_jvm/"><link rel="icon" href="/images/lr.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>JVM - 蓉的个人博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="蓉蓉"><meta name="msapplication-TileImage" content="/images/lr.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="蓉蓉"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content=""><meta property="og:type" content="blog"><meta property="og:title" content="JVM"><meta property="og:url" content="http://mercurius-lei.github.io/2023/09/25/java_jvm/"><meta property="og:site_name" content="蓉的个人博客"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://mercurius-lei.github.io/images/java/java-memory_area_jdk1_8.png"><meta property="og:image" content="http://mercurius-lei.github.io/images/java/hotspot_heap_structure.png"><meta property="og:image" content="http://mercurius-lei.github.io/images/java/gc_algorithm_mark_sweep.png"><meta property="og:image" content="http://mercurius-lei.github.io/images/java/gc_algorithm_copy.png"><meta property="og:image" content="http://mercurius-lei.github.io/images/java/gc_algorithm_mark_compact.png"><meta property="og:image" content="http://mercurius-lei.github.io/images/java/gc_collectors.jpg"><meta property="og:image" content="http://mercurius-lei.github.io/images/java/g1_heap_allocation.png"><meta property="og:image" content="http://mercurius-lei.github.io/images/java/jdk_command_tools.png"><meta property="og:image" content="http://mercurius-lei.github.io/images/java/class_loader_parents_delegation_model.png"><meta property="og:image" content="http://mercurius-lei.github.io/images/java/tomcat_class_loader_model.png"><meta property="article:published_time" content="2023-09-25T10:15:11.142Z"><meta property="article:modified_time" content="2023-11-05T14:02:32.769Z"><meta property="article:author" content="lei.ch1941"><meta property="article:tag" content="todo"><meta property="article:tag" content="Java"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://mercurius-lei.github.io/images/java/java-memory_area_jdk1_8.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://mercurius-lei.github.io/2023/09/25/java_jvm/"},"headline":"JVM","image":["http://mercurius-lei.github.io/images/java/java-memory_area_jdk1_8.png","http://mercurius-lei.github.io/images/java/hotspot_heap_structure.png","http://mercurius-lei.github.io/images/java/gc_algorithm_mark_sweep.png","http://mercurius-lei.github.io/images/java/gc_algorithm_copy.png","http://mercurius-lei.github.io/images/java/gc_algorithm_mark_compact.png","http://mercurius-lei.github.io/images/java/gc_collectors.jpg","http://mercurius-lei.github.io/images/java/g1_heap_allocation.png","http://mercurius-lei.github.io/images/java/jdk_command_tools.png","http://mercurius-lei.github.io/images/java/class_loader_parents_delegation_model.png","http://mercurius-lei.github.io/images/java/tomcat_class_loader_model.png"],"datePublished":"2023-09-25T10:15:11.142Z","dateModified":"2023-11-05T14:02:32.769Z","author":{"@type":"Person","name":"lei.ch1941"},"publisher":{"@type":"Organization","name":"蓉的个人博客","logo":{"@type":"ImageObject","url":"http://mercurius-lei.github.io/images/lr.svg"}},"description":""}</script><link rel="canonical" href="http://mercurius-lei.github.io/2023/09/25/java_jvm/"><link rel="icon" href="/images/lr.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
   (function () {
       function switchTab() {
           if (!location.hash) {
@@ -29,7 +29,331 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/images/lr.svg" alt="蓉的个人博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/Mercurius-lei"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-25T10:15:11.142Z" title="9/25/2023, 6:15:11 PM">2023-09-25</time>发表</span><span class="level-item"><time dateTime="2023-09-25T11:30:15.714Z" title="9/25/2023, 7:30:15 PM">2023-09-25</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Java/">Java</a></span><span class="level-item">几秒读完 (大约1个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">JVM</h1><div class="content"><span id="more"></span></div><div class="article-licensing box"><div class="licensing-title"><p>JVM</p><p><a href="http://mercurius-lei.github.io/2023/09/25/java_jvm/">http://mercurius-lei.github.io/2023/09/25/java_jvm/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>lei.ch1941</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-09-25</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-09-25</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/todo/">todo</a><a class="link-muted mr-2" rel="tag" href="/tags/Java/">Java</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/09/25/java_new_feature/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Java版本新特性</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/09/25/java_threadpool/"><span class="level-item">Java线程池</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><script src="https://utteranc.es/client.js" repo="Mercurius-lei/Mercurius-lei.github.io" issue-term="pathname" label="question" theme="github-light" crossorigin="anonymous" async></script></div></div></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3 is-sticky"><!--!--><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Java/"><span class="tag">Java</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/k8s/"><span class="tag">k8s</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/todo/"><span class="tag">todo</span><span class="tag">27</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"><span class="tag">分布式</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B9%B6%E5%8F%91/"><span class="tag">并发</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="tag">数据库</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"><span class="tag">消息队列</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%9B%91%E6%8E%A7/"><span class="tag">监控</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%93%E5%AD%98/"><span class="tag">缓存</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/"><span class="tag">网络</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="tag">设计模式</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Java/"><span class="level-start"><span class="level-item">Java</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/k8s/"><span class="level-start"><span class="level-item">k8s</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"><span class="level-start"><span class="level-item">分布式</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="level-start"><span class="level-item">数据库</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%AE%97%E6%B3%95/"><span class="level-start"><span class="level-item">算法</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BD%91%E7%BB%9C/"><span class="level-start"><span class="level-item">网络</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="level-start"><span class="level-item">设计模式</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/images/lr.svg" alt="蓉的个人博客" height="28"></a><p class="is-size-7"><span>&copy; 2023 lei.ch1941</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/Mercurius-lei"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/images/lr.svg" alt="蓉的个人博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/Mercurius-lei"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-25T10:15:11.142Z" title="9/25/2023, 6:15:11 PM">2023-09-25</time>发表</span><span class="level-item"><time dateTime="2023-11-05T14:02:32.769Z" title="11/5/2023, 10:02:32 PM">2023-11-05</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Java/">Java</a></span><span class="level-item">1 小时读完 (大约13054个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">JVM</h1><div class="content"><hr>
+<span id="more"></span>
+
+<h1 id="1-Java内存区域"><a href="#1-Java内存区域" class="headerlink" title="1. Java内存区域"></a>1. Java内存区域</h1><p>JDK1.8 内存区域如下图（与1.7的主要区别在于把堆上的的方法区转换为了本地内存的元空间）：<br><img src="/./../images/java/java-memory_area_jdk1_8.png" alt="img"></p>
+<p>（1）虚拟机栈</p>
+<p>Java 虚拟机栈是线程私有的，它的生命周期和线程相同，随着线程的创建而创建，随着线程的死亡而死亡。栈由一个个栈帧组成，而每个栈帧中都拥有：局部变量表、操作数栈、动态链接、方法返回地址。</p>
+<ul>
+<li>局部变量表：主要存放了编译期可知的各种数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（reference 类型，它不同于对象本身，可能是一个指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄或其他与此对象相关的位置）。</li>
+<li>操作数栈：主要作为方法调用的中转站使用，用于存放方法执行过程中产生的中间计算结果。另外，计算过程中产生的临时变量也会放在操作数栈中。</li>
+<li>动态链接：主要服务一个方法需要调用其他方法的场景。Class 文件的常量池里保存有大量的符号引用比如方法引用的符号引用。当一个方法要调用其他方法，需要将常量池中指向方法的符号引用转化为其在内存地址中的直接引用。动态链接的作用就是为了将符号引用转换为调用方法的直接引用，这个过程也被称为动态连接 。</li>
+<li>方法返回：Java 方法有两种返回方式，一种是 return 语句正常返回，一种是抛出异常。不管哪种返回方式，都会导致栈帧被弹出。也就是说， 栈帧随着方法调用而创建，随着方法结束而销毁。无论方法正常完成还是异常完成都算作方法结束。</li>
+</ul>
+<p>程序运行中栈可能会出现两种错误：</p>
+<ul>
+<li><strong><code>StackOverFlowError</code>：</strong> 若栈的内存大小不允许动态扩展，那么当线程请求栈的深度超过当前 Java 虚拟机栈的最大深度的时候，就抛出 <code>StackOverFlowError</code> 错误。</li>
+<li><strong><code>OutOfMemoryError</code>：</strong> 如果栈的内存大小可以动态扩展， 如果虚拟机在动态扩展栈时无法申请到足够的内存空间，则抛出 <code>OutOfMemoryError</code>异常。</li>
+</ul>
+<p>（2）本地方法栈</p>
+<p>和虚拟机栈所发挥的作用非常相似，区别是：<strong>虚拟机栈为虚拟机执行 Java 方法 （也就是字节码）服务，而本地方法栈则为虚拟机使用到的 Native 方法服务。</strong> 在 HotSpot 虚拟机中和 Java 虚拟机栈合二为一。</p>
+<p>（3）堆</p>
+<p>堆结构如下：</p>
+<p><img src="/./../images/java/hotspot_heap_structure.png"></p>
+<p>大部分情况，对象都会首先在 Eden 区域分配，在一次新生代垃圾回收后，如果对象还存活，则会进入 S0 或者 S1，并且对象的年龄还会加 1(Eden 区-&gt;Survivor 区后对象的初始年龄变为 1)，当它的年龄增加到一定程度（默认为 15 岁），就会被晋升到老年代中。对象晋升到老年代的年龄阈值，可以通过参数 <code>-XX:MaxTenuringThreshold</code> 来设置。</p>
+<p>动态年龄计算：Hotspot 遍历所有对象时，按照年龄从小到大对其所占用的大小进行累积，当累积的某个年龄大小超过了 survivor 区的一半时，取这个年龄和 MaxTenuringThreshold 中更小的一个值，作为新的晋升年龄阈值。</p>
+<p>（4）方法区</p>
+<p>方法区属于是 JVM 运行时数据区域的一块逻辑区域，是各个线程共享的内存区域。当虚拟机要使用一个类时，它需要读取并解析 Class 文件获取相关信息，再将信息存入到方法区。方法区会存储已被虚拟机加载的 类信息、字段信息、方法信息、常量、静态变量、即时编译器编译后的代码缓存等数据。</p>
+<p>方法区和永久代以及元空间是什么关系呢？ 方法区和永久代以及元空间的关系很像 Java 中接口和类的关系，类实现了接口，这里的类就可以看作是永久代和元空间，接口可以看作是方法区，也就是说永久代以及元空间是 HotSpot 虚拟机对虚拟机规范中方法区的两种实现方式。并且，永久代是 JDK 1.8 之前的方法区实现，JDK 1.8 及以后方法区的实现变成了元空间。</p>
+<p>与永久代很大的不同就是，如果不指定大小的话，随着更多类的创建，虚拟机会耗尽所有可用的系统内存。</p>
+<p>（5）运行时常量池</p>
+<p>Class 文件中除了有类的版本、字段、方法、接口等描述信息外，还有用于存放编译期生成的各种字面量（Literal）和符号引用（Symbolic Reference）的 常量池表(Constant Pool Table) 。</p>
+<p>字面量是源代码中的固定值的表示法，即通过字面我们就能知道其值的含义。字面量包括整数、浮点数和字符串字面量。常见的符号引用包括类符号引用、字段符号引用、方法符号引用、接口方法符号。</p>
+<p>（6）字符串常量池</p>
+<p>字符串常量池 是 JVM 为了提升性能和减少内存消耗针对字符串（String 类）专门开辟的一块区域，主要目的是为了避免字符串的重复创建。</p>
+<p>JDK 1.7 为什么要将字符串常量池移动到堆中？主要是因为永久代（方法区实现）的 GC 回收效率太低，只有在整堆收集 (Full GC)的时候才会被执行 GC。Java 程序中通常会有大量的被创建的字符串等待回收，将字符串常量池放到堆中，能够更高效及时地回收字符串内存。</p>
+<p>（7）直接内存</p>
+<p>直接内存是一种特殊的内存缓冲区，并不在 Java 堆或方法区中分配的，而是通过 JNI 的方式在本地内存上分配的。</p>
+<h1 id="2-垃圾回收"><a href="#2-垃圾回收" class="headerlink" title="2. 垃圾回收"></a>2. 垃圾回收</h1><p>Java 的自动内存管理主要是针对对象内存的回收和对象内存的分配。同时，Java 自动内存管理最核心的功能是堆内存中对象的分配与回收。</p>
+<p>Java 堆是垃圾收集器管理的主要区域，因此也被称作  <strong>GC 堆（Garbage Collected Heap）</strong> 。</p>
+<h2 id="2-1-内存分配和回收原则"><a href="#2-1-内存分配和回收原则" class="headerlink" title="2.1 内存分配和回收原则"></a>2.1 内存分配和回收原则</h2><p>（1）对象优先在 Eden 区分配</p>
+<p>大多数情况下，对象在新生代中 Eden 区分配。当 Eden 区没有足够空间进行分配时，虚拟机将发起一次 Minor GC。</p>
+<p>（2） 大对象直接进入老年代</p>
+<p>大对象就是需要大量连续内存空间的对象（比如：字符串、数组）。</p>
+<p>大对象直接进入老年代的行为是由虚拟机动态决定的，它与具体使用的垃圾回收器和相关参数有关。大对象直接进入老年代是一种优化策略，旨在避免将大对象放入新生代，从而减少新生代的垃圾回收频率和成本。</p>
+<p>（3）长期存活的对象将进入老年代</p>
+<p>既然虚拟机采用了分代收集的思想来管理内存，那么内存回收时就必须能识别哪些对象应放在新生代，哪些对象应放在老年代中。为了做到这一点，虚拟机给每个对象一个对象年龄（Age）计数器。</p>
+<p>大部分情况，对象都会首先在 Eden 区域分配。如果对象在 Eden 出生并经过第一次 Minor GC 后仍然能够存活，并且能被 Survivor 容纳的话，将被移动到 Survivor 空间（s0 或者 s1）中，并将对象年龄设为 1(Eden 区-&gt;Survivor 区后对象的初始年龄变为 1)。</p>
+<p>对象在 Survivor 中每熬过一次 MinorGC,年龄就增加 1 岁，当它的年龄增加到一定程度（默认为 15 岁），就会被晋升到老年代中。对象晋升到老年代的年龄阈值，可以通过参数 <code>-XX:MaxTenuringThreshold</code> 来设置。同时，动态年龄计算也会实时修改年龄阈值。</p>
+<p>（4）空间分配担保</p>
+<p>空间分配担保是为了确保在 Minor GC 之前老年代本身还有容纳新生代所有对象的剩余空间。</p>
+<p>《深入理解 Java 虚拟机》第三章对于空间分配担保的描述如下：</p>
+<blockquote>
+<p>JDK 6 Update 24 之前，在发生 Minor GC 之前，虚拟机必须先检查老年代最大可用的连续空间是否大于新生代所有对象总空间，如果这个条件成立，那这一次 Minor GC 可以确保是安全的。如果不成立，则虚拟机会先查看 <code>-XX:HandlePromotionFailure</code> 参数的设置值是否允许担保失败(Handle Promotion Failure);如果允许，那会继续检查老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小，如果大于，将尝试进行一次 Minor GC，尽管这次 Minor GC 是有风险的;如果小于，或者 <code>-XX: HandlePromotionFailure</code> 设置不允许冒险，那这时就要改为进行一次 Full GC。</p>
+<p>JDK 6 Update 24 之后的规则变为只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大小，就会进行 Minor GC，否则将进行 Full GC。</p>
+</blockquote>
+<h2 id="2-2-死亡对象判断方法"><a href="#2-2-死亡对象判断方法" class="headerlink" title="2.2 死亡对象判断方法"></a>2.2 死亡对象判断方法</h2><p>（1）引用计数法</p>
+<p>给对象中添加一个引用计数器：</p>
+<ul>
+<li>每当有一个地方引用它，计数器就加 1；</li>
+<li>当引用失效，计数器就减 1；</li>
+<li>任何时候计数器为 0 的对象就是不可能再被使用的。</li>
+</ul>
+<p>这个方法实现简单，效率高，但是目前主流的虚拟机中并没有选择这个算法来管理内存，其最主要的原因是它很难解决对象之间循环引用的问题。</p>
+<p>（2）可达性分析算法</p>
+<p>这个算法的基本思想就是通过一系列的称为 <strong>“GC Roots”</strong> 的对象作为起点，从这些节点开始向下搜索，节点所走过的路径称为引用链，当一个对象到 GC Roots 没有任何引用链相连的话，则证明此对象是不可用的，需要被回收。</p>
+<p><strong>哪些对象可以作为 GC Roots 呢？</strong></p>
+<ul>
+<li>虚拟机栈(栈帧中的局部变量表)中引用的对象</li>
+<li>本地方法栈(Native 方法)中引用的对象</li>
+<li>方法区中类静态属性引用的对象</li>
+<li>方法区中常量引用的对象</li>
+<li>所有被同步锁持有的对象</li>
+<li>JNI（Java Native Interface）引用的对象</li>
+</ul>
+<p><strong>对象可以被回收，就代表一定会被回收吗？</strong></p>
+<p>即使在可达性分析法中不可达的对象，也并非是“非死不可”的，这时候它们暂时处于“缓刑阶段”，要真正宣告一个对象死亡，至少要经历两次标记过程；可达性分析法中不可达的对象被第一次标记并且进行一次筛选，筛选的条件是此对象是否有必要执行 <code>finalize</code> 方法。当对象没有覆盖 <code>finalize</code> 方法，或 <code>finalize</code> 方法已经被虚拟机调用过时，虚拟机将这两种情况视为没有必要执行。</p>
+<p>被判定为需要执行的对象将会被放在一个队列中进行第二次标记，除非这个对象与引用链上的任何一个对象建立关联，否则就会被真的回收。</p>
+<p>（3）如何判断一个类是无用的类？</p>
+<p>类需要同时满足下面 3 个条件才能算是  <strong>“无用的类”</strong> ：</p>
+<ul>
+<li>该类所有的实例都已经被回收，也就是 Java 堆中不存在该类的任何实例。</li>
+<li>加载该类的 <code>ClassLoader</code> 已经被回收。</li>
+<li>该类对应的 <code>java.lang.Class</code> 对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法。</li>
+</ul>
+<p>虚拟机可以对满足上述 3 个条件的无用类进行回收，这里说的仅仅是“可以”，而并不是和对象一样不使用了就会必然被回收。</p>
+<h2 id="2-3-垃圾收集算法"><a href="#2-3-垃圾收集算法" class="headerlink" title="2.3 垃圾收集算法"></a>2.3 垃圾收集算法</h2><p>（1）标记-清除算法</p>
+<p>标记-清除（Mark-and-Sweep）算法分为“标记（Mark）”和“清除（Sweep）”阶段：首先标记出所有不需要回收的对象，在标记完成后统一回收掉所有没有被标记的对象。</p>
+<p><img src="/./../images/java/gc_algorithm_mark_sweep.png"></p>
+<p>它是最基础的收集算法，后续的算法都是对其不足进行改进得到。这种垃圾收集算法会带来两个明显的问题：</p>
+<ul>
+<li>效率问题：标记和清除两个过程效率都不高。</li>
+<li>空间问题：标记清除后会产生大量不连续的内存碎片。</li>
+</ul>
+<p>（2）复制算法</p>
+<p>为了解决标记-清除算法的效率和内存碎片问题，复制（Copying）收集算法出现了。它可以将内存分为大小相同的两块，每次使用其中的一块。当这一块的内存使用完后，就将还存活的对象复制到另一块去，然后再把使用的空间一次清理掉。这样就使每次的内存回收都是对内存区间的一半进行回收。</p>
+<p><img src="/./../images/java/gc_algorithm_copy.png"></p>
+<p>虽然改进了标记-清除算法，但依然存在下面这些问题：</p>
+<ul>
+<li>可用内存变小：可用内存缩小为原来的一半。</li>
+<li>不适合老年代：如果存活对象数量比较大，复制性能会变得很差。</li>
+</ul>
+<p>（3）标记-整理算法</p>
+<p>标记-整理（Mark-and-Compact）算法是根据老年代的特点提出的一种标记算法，标记过程仍然与“标记-清除”算法一样，但后续步骤不是直接对可回收对象回收，而是让所有存活的对象向一端移动，然后直接清理掉端边界以外的内存。</p>
+<p><img src="/./../images/java/gc_algorithm_mark_compact.png"></p>
+<p>由于多了整理这一步，因此效率也不高，适合老年代这种垃圾回收频率不是很高的场景。</p>
+<p>（4）分代收集算法</p>
+<p>当前虚拟机的垃圾收集都采用分代收集算法，这种算法没有什么新的思想，只是根据对象存活周期的不同将内存分为几块。一般将 Java 堆分为新生代和老年代，这样我们就可以根据各个年代的特点选择合适的垃圾收集算法。</p>
+<p>比如在新生代中，每次收集都会有大量对象死去，所以可以选择”标记-复制“算法，只需要付出少量对象的复制成本就可以完成每次垃圾收集。而老年代的对象存活几率是比较高的，而且没有额外的空间对它进行分配担保，所以我们必须选择“标记-清除”或“标记-整理”算法进行垃圾收集。</p>
+<h2 id="2-4-垃圾收集器"><a href="#2-4-垃圾收集器" class="headerlink" title="2.4 垃圾收集器"></a>2.4 垃圾收集器</h2><p>以上是 HotSpot 虚拟机中的 7 个垃圾收集器，连线表示垃圾收集器可以配合使用。</p>
+<ul>
+<li>单线程与多线程: 单线程指的是垃圾收集器只使用一个线程进行收集，而多线程使用多个线程；</li>
+<li>串行与并行: 串行指的是垃圾收集器与用户程序交替执行，这意味着在执行垃圾收集的时候需要停顿用户程序；并形指的是垃圾收集器和用户程序同时执行。除了 CMS 和 G1 之外，其它垃圾收集器都是以串行的方式执行。</li>
+</ul>
+<p><img src="/./../images/java/gc_collectors.jpg"></p>
+<p>（1）Serial 收集器</p>
+<p>Serial 翻译为串行，也就是说它以串行的方式执行。它是单线程的收集器，只会使用一个线程进行垃圾收集工作。</p>
+<p><strong>新生代采用标记-复制算法，老年代采用标记-整理算法。</strong></p>
+<p>它的优点是简单高效，对于单个 CPU 环境来说，由于没有线程交互的开销，因此拥有最高的单线程收集效率。</p>
+<p>它是 Client 模式下的默认新生代收集器，因为在用户的桌面应用场景下，分配给虚拟机管理的内存一般来说不会很大。Serial 收集器收集几十兆甚至一两百兆的新生代停顿时间可以控制在一百多毫秒以内，只要不是太频繁，这点停顿是可以接受的。</p>
+<p>（2）ParNew 收集器</p>
+<p>ParNew 收集器其实就是 Serial 收集器的多线程版本，除了使用多线程进行垃圾收集外，其余行为（控制参数、收集算法、回收策略等等）和 Serial 收集器完全一样。</p>
+<p><strong>新生代采用标记-复制算法，老年代采用标记-整理算法。</strong></p>
+<p>它是许多运行在 Server 模式下的虚拟机的首要选择，除了 Serial 收集器外，只有它能与 CMS 收集器（真正意义上的并发收集器，后面会介绍到）配合工作。</p>
+<p><strong>并行和并发概念补充：</strong></p>
+<ul>
+<li><strong>并行（Parallel）</strong> ：指多条垃圾收集线程并行工作，但此时用户线程仍然处于等待状态。</li>
+<li><strong>并发（Concurrent）</strong> ：指用户线程与垃圾收集线程同时执行（但不一定是并行，可能会交替执行），用户程序在继续运行，而垃圾收集器运行在另一个 CPU 上。</li>
+</ul>
+<p>（3）Parallel Scavenge 收集器</p>
+<p>与 ParNew 一样是多线程收集器。<strong>这是 JDK1.8 默认收集器</strong>。</p>
+<p>其它收集器关注点是尽可能缩短垃圾收集时用户线程的停顿时间，而它的目标是达到一个可控制的吞吐量，它被称为“吞吐量优先”收集器。这里的吞吐量指 CPU 用于运行用户代码的时间占总时间的比值。</p>
+<p>停顿时间越短就越适合需要与用户交互的程序，良好的响应速度能提升用户体验。而高吞吐量则可以高效率地利用 CPU 时间，尽快完成程序的运算任务，主要适合在后台运算而不需要太多交互的任务。</p>
+<p>缩短停顿时间是以牺牲吞吐量和新生代空间来换取的: 新生代空间变小，垃圾回收变得频繁，导致吞吐量下降。</p>
+<p>可以通过一个开关参数打开 GC 自适应的调节策略(GC Ergonomics)，就不需要手动指定新生代的大小(-Xmn)、Eden 和 Survivor 区的比例、晋升老年代对象年龄等细节参数了。虚拟机会根据当前系统的运行情况收集性能监控信息，动态调整这些参数以提供最合适的停顿时间或者最大的吞吐量。</p>
+<p>（4）Serial Old 收集器</p>
+<p>是 Serial 收集器的老年代版本，也是给 Client 模式下的虚拟机使用。如果用在 Server 模式下，它有两大用途:</p>
+<ul>
+<li>在 JDK 1.5 以及之前版本(Parallel Old 诞生以前)中与 Parallel Scavenge 收集器搭配使用。</li>
+<li>作为 CMS 收集器的后备预案，在并发收集发生 Concurrent Mode Failure 时使用。</li>
+</ul>
+<p>（5）Parallel Old 收集器</p>
+<p>是 Parallel Scavenge 收集器的老年代版本。</p>
+<p>在注重吞吐量以及 CPU 资源敏感的场合，都可以优先考虑 Parallel Scavenge 加 Parallel Old 收集器。</p>
+<p>（6）CMS 收集器</p>
+<p>CMS（Concurrent Mark Sweep）收集器是一种以获取最短回收停顿时间为目标的收集器。它非常符合在注重用户体验的应用上使用，是 HotSpot 虚拟机第一款真正意义上的并发收集器，它第一次实现了让垃圾收集线程与用户线程（基本上）同时工作。</p>
+<p>从名字中的<strong>Mark Sweep</strong>这两个词可以看出，CMS 收集器是一种 <strong>“标记-清除”算法</strong>实现的，它的运作过程相比于前面几种垃圾收集器来说更加复杂一些。整个过程分为四个步骤：</p>
+<ul>
+<li>初始标记： 暂停所有的其他线程，并记录下直接与 root 相连的对象，速度很快 ；</li>
+<li>并发标记： 同时开启 GC 和用户线程，用一个闭包结构去记录可达对象。但在这个阶段结束，这个闭包结构并不能保证包含当前所有的可达对象。因为用户线程可能会不断的更新引用域，所以 GC 线程无法保证可达性分析的实时性。所以这个算法里会跟踪记录这些发生引用更新的地方。</li>
+<li>重新标记： 重新标记阶段就是为了修正并发标记期间因为用户程序继续运行而导致标记产生变动的那一部分对象的标记记录，这个阶段的停顿时间一般会比初始标记阶段的时间稍长，远远比并发标记阶段时间短</li>
+<li>并发清除： 开启用户线程，同时 GC 线程开始对未标记的区域做清扫。</li>
+</ul>
+<p>在整个过程中耗时最长的并发标记和并发清除过程中，收集器线程都可以与用户线程一起工作，不需要进行停顿。具有以下缺点:</p>
+<ul>
+<li>吞吐量低: 低停顿时间是以牺牲吞吐量为代价的，导致 CPU 利用率不够高。</li>
+<li>无法处理浮动垃圾，可能出现 Concurrent Mode Failure。浮动垃圾是指并发清除阶段由于用户线程继续运行而产生的垃圾，这部分垃圾只能到下一次 GC 时才能进行回收。由于浮动垃圾的存在，因此需要预留出一部分内存，意味着 CMS 收集不能像其它收集器那样等待老年代快满的时候再回收。如果预留的内存不够存放浮动垃圾，就会出现 Concurrent Mode Failure，这时虚拟机将临时启用 Serial Old 来替代 CMS。</li>
+<li>标记 - 清除算法导致的空间碎片，往往出现老年代空间剩余，但无法找到足够大连续空间来分配当前对象，不得不提前触发一次 Full GC。</li>
+</ul>
+<p>（7）G1 收集器</p>
+<p>G1(Garbage-First)，它是一款面向服务端应用的垃圾收集器，在多 CPU 和大内存的场景下有很好的性能。HotSpot 开发团队赋予它的使命是未来可以替换掉 CMS 收集器。<strong>从 JDK9 开始，G1 垃圾收集器成为了默认的垃圾收集器。</strong></p>
+<p>堆被分为新生代和老年代，其它收集器进行收集的范围都是整个新生代或者老年代，而 G1 可以直接对新生代和老年代一起回收。</p>
+<p>G1 把堆划分成多个大小相等的独立区域(Region)，新生代和老年代不再物理隔离。每个 Region 都有一个 Remembered Set，用来记录该 Region 对象的引用对象所在的 Region。通过使用 Remembered Set，在做可达性分析的时候就可以避免全堆扫描。</p>
+<p><img src="/../images/java/g1_heap_allocation.png"></p>
+<p>通过引入 Region 的概念，从而将原来的一整块内存空间划分成多个的小空间，使得每个小空间可以单独进行垃圾回收。这种划分方法带来了很大的灵活性，使得可预测的停顿时间模型成为可能。通过记录每个 Region 垃圾回收时间以及回收所获得的空间(这两个值是通过过去回收的经验获得)，并维护一个优先列表，每次根据允许的收集时间，优先回收价值最大的 Region。。这种使用 Region 划分内存空间以及有优先级的区域回收方式，保证了 G1 收集器在有限时间内可以尽可能高的收集效率（把内存化整为零）。</p>
+<p>G1被视为 JDK1.7 中 HotSpot 虚拟机的一个重要进化特征。它具备以下特点：</p>
+<ul>
+<li>并行与并发 ：G1 能充分利用 CPU、多核环境下的硬件优势，使用多个 CPU（CPU 或者 CPU 核心）来缩短 Stop-The-World 停顿时间。部分其他收集器原本需要停顿 Java 线程执行的 GC 动作，G1 收集器仍然可以通过并发的方式让 java 程序继续执行。</li>
+<li>分代收集 ：虽然 G1 可以不需要其他收集器配合就能独立管理整个 GC 堆，但是还是保留了分代的概念。</li>
+<li>空间整合 ：与 CMS 的“标记-清除”算法不同，G1 从整体来看是基于“标记-整理”算法实现的收集器；从局部(两个 Region 之间)上来看是基于“复制”算法实现的，这意味着运行期间不会产生内存空间碎片。</li>
+<li>可预测的停顿 ：这是 G1 相对于 CMS 的另一个大优势，降低停顿时间是 G1 和 CMS 共同的关注点，但 G1 除了追求低停顿外，还能建立可预测的停顿时间模型，能让使用者明确指定在一个长度为 M 毫秒的时间片段内，消耗在垃圾收集上的时间不得超过 N 毫秒。</li>
+</ul>
+<p>如果不计算维护 Remembered Set 的操作，G1 收集器的运作大致可划分为以下几个步骤:</p>
+<ul>
+<li>初始标记</li>
+<li>并发标记</li>
+<li>最终标记: 为了修正在并发标记期间因用户程序继续运作而导致标记产生变动的那一部分标记记录，虚拟机将这段时间对象变化记录在线程的 Remembered Set Logs 里面，最终标记阶段需要把 Remembered Set Logs 的数据合并到 Remembered Set 中。这阶段需要停顿线程，但是可并行执行。</li>
+<li>筛选回收: 首先对各个 Region 中的回收价值和成本进行排序，根据用户所期望的 GC 停顿时间来制定回收计划。此阶段其实也可以做到与用户程序一起并发执行，但是因为只回收一部分 Region，时间是用户可控制的，而且停顿用户线程将大幅度提高收集效率。</li>
+</ul>
+<h2 id="2-5-GC-分类"><a href="#2-5-GC-分类" class="headerlink" title="2.5 GC 分类"></a>2.5 GC 分类</h2><p>针对 HotSpot VM 的实现，它里面的 GC 按照回收区域主要分为两大类：部分收集（Partial GC），整堆收集（Full GC）</p>
+<ul>
+<li>部分收集：不是完整收集整个 Java 堆的垃圾收集。其中又分为：<ul>
+<li>新生代收集（Minor GC&#x2F;Young GC）：只是新生代的垃圾收集</li>
+<li>老年代收集（Major GC&#x2F;Old GC）：只是老年代的垃圾收集<ul>
+<li>目前，只有 CMS会有单独收集老年代的行为</li>
+<li>很多时候 Major GC 会和 Full GC 混合使用，需要具体分辨是老年代回收还是整堆回收</li>
+</ul>
+</li>
+<li>混合收集（Mixed GC）：收集整个新生代以及部分老年代的垃圾收集<ul>
+<li>目前只有 G1会有这种行为</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>整堆收集（Full GC）：收集整个 Java 堆和方法区的垃圾</li>
+</ul>
+<p>注：对于 Minor GC，其触发条件非常简单，当 Eden 空间满时，就将触发一次 Minor GC。而 Full GC 则相对复杂，有以下条件:</p>
+<p>（1）调用 System.gc()</p>
+<p>只是建议虚拟机执行 Full GC，但是虚拟机不一定真正去执行。不建议使用这种方式，而是让虚拟机管理内存。</p>
+<p>（2）老年代空间不足</p>
+<p>老年代空间不足的常见场景为前文所讲的大对象直接进入老年代、长期存活的对象进入老年代等。</p>
+<p>为了避免以上原因引起的 Full GC，应当尽量不要创建过大的对象以及数组。除此之外，可以通过 -Xmn 虚拟机参数调大新生代的大小，让对象尽量在新生代被回收掉，不进入老年代。还可以通过 -XX:MaxTenuringThreshold 调大对象进入老年代的年龄，让对象在新生代多存活一段时间。</p>
+<p>（3）空间分配担保失败</p>
+<p>使用复制算法的 Minor GC 需要老年代的内存空间作担保，如果担保失败会执行一次 Full GC。</p>
+<p>（4） JDK 1.7 及以前的永久代空间不足</p>
+<p>在 JDK 1.7 及以前，HotSpot 虚拟机中的方法区是用永久代实现的，永久代中存放的为一些 Class 的信息、常量、静态变量等数据。</p>
+<p>当系统中要加载的类、反射的类和调用的方法较多时，永久代可能会被占满，在未配置为采用 CMS GC 的情况下也会执行 Full GC。如果经过 Full GC 仍然回收不了，那么虚拟机会抛出 java.lang.OutOfMemoryError。</p>
+<p>为避免以上原因引起的 Full GC，可采用的方法为增大永久代空间或转为使用 CMS GC。</p>
+<h2 id="2-6-JDK命令行工具"><a href="#2-6-JDK命令行工具" class="headerlink" title="2.6 JDK命令行工具"></a>2.6 JDK命令行工具</h2><p>常见GC查看工具如下：</p>
+<p><img src="/./../images/java/jdk_command_tools.png"></p>
+<p>（1）jps</p>
+<p>jps(JVM Process Status) 命令类似 UNIX 的 ps 命令，用于查看所有 Java 进程。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">jps: 显示虚拟机执行主类名称以及这些进程的</span><br><span class="line">本地虚拟机唯一 ID（Local Virtual Machine Identifier,LVMID）</span><br><span class="line"></span><br><span class="line">参数：</span><br><span class="line">-l: 输出主类的全名，如果进程执行的是 Jar 包，输出 Jar 路径</span><br><span class="line">-v：输出虚拟机进程启动时 JVM 参数</span><br><span class="line">-m：输出传递给 Java 进程 main() 函数的参数</span><br></pre></td></tr></table></figure>
+
+<p>（2）jstat</p>
+<p>jstat（JVM Statistics Monitoring Tool） 使用于监视虚拟机各种运行状态信息的命令行工具。 它可以显示本地或者远程（需要远程主机提供 RMI 支持）虚拟机进程中的类信息、内存、垃圾收集、JIT 编译等运行数据，在没有 GUI，只提供了纯文本控制台环境的服务器上，它将是运行期间定位虚拟机性能问题的首选工具。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- `jstat -class vmid`：显示 ClassLoader 的相关信息；</span><br><span class="line">- `jstat -compiler vmid`：显示 JIT 编译的相关信息；</span><br><span class="line">- `jstat -gc vmid`：显示与 GC 相关的堆信息；</span><br><span class="line">- `jstat -gccapacity vmid`：显示各个代的容量及使用情况；</span><br><span class="line">- `jstat -gcnew vmid`：显示新生代信息；</span><br><span class="line">- `jstat -gcnewcapcacity vmid`：显示新生代大小与使用情况；</span><br><span class="line">- `jstat -gcold vmid`：显示老年代和永久代的行为统计，从 jdk1.8 开始,该选项仅表示老年代，因为永久代被移除了；</span><br><span class="line">- `jstat -gcoldcapacity vmid`：显示老年代的大小；</span><br><span class="line">- `jstat -gcpermcapacity vmid`：显示永久代大小，从 jdk1.8 开始,该选项不存在了，因为永久代被移除了；</span><br><span class="line">- `jstat -gcutil vmid`：显示垃圾收集信息；</span><br></pre></td></tr></table></figure>
+
+<p>（3）jinfo</p>
+<p>jinfo可以实时地查看虚拟机各项参数，并且可以在不重启虚拟机的情况下，动态地修改 jvm 的参数，这一点在线上的环境特别有用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- jinfo vmid :输出当前 jvm 进程的全部参数和系统属性 (第一部分是系统的属性，第二部分是 JVM 的参数)。</span><br><span class="line">- jinfo -flag name vmid :输出对应名称的参数的具体值。</span><br><span class="line">- jinfo -flag [+|-]name vmid 开启或者关闭对应名称的参数。</span><br></pre></td></tr></table></figure>
+
+<p>（4）jmap</p>
+<p>jmap（Memory Map for Java）命令用于生成堆转储快照。 如果不使用 jmap 命令，要想获取 Java 堆转储，可以使用 “-XX:+HeapDumpOnOutOfMemoryError” 参数，可以让虚拟机在 OOM 异常出现之后自动生成 dump 文件，Linux 命令下可以通过 kill -3 发送进程退出信号也能拿到 dump 文件。</p>
+<p>jmap 的作用并不仅仅是为了获取 dump 文件，它还可以查询 finalizer 执行队列、Java 堆和永久代的详细信息，如空间使用率、当前使用的是哪种收集器等。</p>
+<p>（5）jstack</p>
+<p>jstack（Stack Trace for Java）命令用于生成虚拟机当前时刻的线程快照。线程快照就是当前虚拟机内每一条线程正在执行的方法堆栈的集合。</p>
+<p>生成线程快照的目的主要是定位线程长时间出现停顿的原因，如线程间死锁、死循环、请求外部资源导致的长时间等待等都是导致线程长时间停顿的原因。线程出现停顿的时候通过jstack来查看各个线程的调用堆栈，就可以知道没有响应的线程到底在后台做些什么事情，或者在等待些什么资源。</p>
+<p>（6）jhat</p>
+<p>jhat 用于分析 heapdump 文件，它会建立一个 HTTP&#x2F;HTML 服务器，让用户可以在浏览器上查看分析结果。</p>
+<h1 id="3-类加载"><a href="#3-类加载" class="headerlink" title="3. 类加载"></a>3. 类加载</h1><p>类从被加载到虚拟机内存中开始到卸载出内存为止，它的整个生命周期可以简单概括为 7 个阶段：：加载（Loading）、验证（Verification）、准备（Preparation）、解析（Resolution）、初始化（Initialization）、使用（Using）和卸载（Unloading）。其中，验证、准备和解析这三个阶段可以统称为连接（Linking）。</p>
+<ul>
+<li>类加载过程： <strong>加载-&gt;连接-&gt;初始化</strong> 。</li>
+<li>连接过程又可分为三步： <strong>验证-&gt;准备-&gt;解析</strong> 。</li>
+</ul>
+<p>加载是类加载过程的第一步，主要完成下面 3 件事情：</p>
+<ol>
+<li>通过全类名获取定义此类的二进制字节流</li>
+<li>将字节流所代表的静态存储结构转换为方法区的运行时数据结构</li>
+<li>在内存中生成一个代表该类的 <code>Class</code> 对象，作为方法区这些数据的访问入口</li>
+</ol>
+<h2 id="3-1-类加载器"><a href="#3-1-类加载器" class="headerlink" title="3.1 类加载器"></a>3.1 类加载器</h2><p>（1）介绍</p>
+<p>简单来说，<strong>类加载器的主要作用就是加载 Java 类的字节码（ <code>.class</code> 文件）到 JVM 中（在内存中生成一个代表该类的 <code>Class</code> 对象）。</strong> 字节码可以是 Java 源程序（<code>.java</code>文件）经过 <code>javac</code> 编译得来，也可以是通过工具动态生成或者通过网络下载得来。</p>
+<p>其实除了加载类之外，类加载器还可以加载 Java 应用所需的资源如文本、图像、配置文件、视频等等文件资源。</p>
+<p>需要注意的是：</p>
+<ul>
+<li>每个 Java 类都有一个引用指向加载它的 <code>ClassLoader</code>。</li>
+<li>数组类不是通过 <code>ClassLoader</code> 创建的（数组类没有对应的二进制字节流），是由 JVM 直接生成的。</li>
+</ul>
+<p>（2）加载规则</p>
+<p>JVM 启动的时候，并不会一次性加载所有的类，而是根据需要去动态加载。也就是说，大部分类在具体用到的时候才会去加载，这样对内存更加友好。</p>
+<p>对于已经加载的类会被放在 <code>ClassLoader</code> 中。在类加载的时候，系统会首先判断当前类是否被加载过。已经被加载的类会直接返回，否则才会尝试加载。也就是说，对于一个类加载器来说，相同二进制名称的类只会被加载一次。</p>
+<p>（3）类加载器分类</p>
+<p>JVM 中内置了三个重要的 <code>ClassLoader</code>：</p>
+<ol>
+<li><strong><code>BootstrapClassLoader</code>(启动类加载器)</strong> ：最顶层的加载类，由 C++实现，通常表示为 null，并且没有父级，主要用来加载 JDK 内部的核心类库（ <code>%JAVA_HOME%/lib</code>目录下的 <code>rt.jar</code>、<code>resources.jar</code>、<code>charsets.jar</code>等 jar 包和类）以及被 <code>-Xbootclasspath</code>参数指定的路径下的所有类。</li>
+<li><strong><code>ExtensionClassLoader</code>(扩展类加载器)</strong> ：主要负责加载 <code>%JRE_HOME%/lib/ext</code> 目录下的 jar 包和类以及被 <code>java.ext.dirs</code> 系统变量所指定的路径下的所有类。</li>
+<li><strong><code>AppClassLoader</code>(应用程序类加载器)</strong> ：面向我们用户的加载器，负责加载当前应用 classpath 下的所有 jar 包和类。</li>
+</ol>
+<p>除了这三种类加载器之外，用户还可以加入自定义的类加载器来进行拓展，以满足自己的特殊需求。就比如说，我们可以对 Java 类的字节码（ .class 文件）进行加密，加载时再利用自定义的类加载器对其解密。</p>
+<p>拓展一下：</p>
+<ul>
+<li><strong><code>rt.jar</code></strong> ：rt 代表“RunTime”，<code>rt.jar</code>是 Java 基础类库，包含 Java doc 里面看到的所有的类的类文件。也就是说，我们常用内置库 <code>java.xxx.*</code>都在里面，比如 <code>java.util.*</code>、<code>java.io.*</code>、<code>java.nio.*</code>、<code>java.lang.*</code>、<code>java.sql.*</code>、<code>java.math.*</code>。</li>
+<li>Java 9 引入了模块系统，并且略微更改了上述的类加载器。扩展类加载器被改名为平台类加载器（platform class loader）。Java SE 中除了少数几个关键模块，比如说 <code>java.base</code> 是由启动类加载器加载之外，其他的模块均由平台类加载器所加载。</li>
+</ul>
+<p><img src="/../images/java/class_loader_parents_delegation_model.png"></p>
+<p>除了 <code>BootstrapClassLoader</code> 是 JVM 自身的一部分之外，其他所有的类加载器都是在 JVM 外部实现的，并且全都继承自 <code>ClassLoader</code>抽象类。这样做的好处是用户可以自定义类加载器，以便让应用程序自己决定如何去获取所需的类。</p>
+<p>每个 <code>ClassLoader</code> 可以通过 <code>getParent()</code>获取其父 <code>ClassLoader</code>，如果获取到 <code>ClassLoader</code> 为 <code>null</code>的话，那么该类是通过 <code>BootstrapClassLoader</code> 加载的（这是因为 <code>BootstrapClassLoader</code> 由 C++ 实现，由于这个 C++ 实现的类加载器在 Java 中是没有与之对应的类的，所以拿到的结果是 null）。</p>
+<p>（4）自定义类加载器</p>
+<p>除了 <code>BootstrapClassLoader</code> 外，其他类加载器均由 Java 实现且全部继承自 <code>java.lang.ClassLoader</code>。如果我们要自定义自己的类加载器，很明显需要继承 <code>ClassLoader</code>抽象类。</p>
+<p><code>ClassLoader</code> 类有两个关键的方法：</p>
+<ul>
+<li><code>protected Class loadClass(String name, boolean resolve)</code>：加载指定二进制名称的类，实现了双亲委派机制 。<code>name</code> 为类的二进制名称，<code>resolve</code> 如果为 true，在加载时调用 <code>resolveClass(Class&lt;?&gt; c)</code> 方法解析该类。</li>
+<li><code>protected Class findClass(String name)</code>：根据类的二进制名称来查找类，默认实现是空方法。</li>
+</ul>
+<p>如果我们不想打破双亲委派模型，就重写 <code>ClassLoader</code> 类中的 <code>findClass()</code> 方法即可，无法被父类加载器加载的类最终会通过这个方法被加载。但是，如果想打破双亲委派模型则需要重写 <code>loadClass()</code> 方法。</p>
+<h2 id="3-2-双亲委派模型"><a href="#3-2-双亲委派模型" class="headerlink" title="3.2 双亲委派模型"></a>3.2 双亲委派模型</h2><p>（1）介绍</p>
+<p>双亲委派模型包含以下几方面：</p>
+<ul>
+<li><code>ClassLoader</code> 类使用委托模型来搜索类和资源。</li>
+<li>双亲委派模型要求除了顶层的启动类加载器外，其余的类加载器都应有自己的父类加载器。</li>
+<li><code>ClassLoader</code> 实例会在试图亲自查找类或资源之前，将搜索类或资源的任务委托给其父类加载器。</li>
+</ul>
+<p>另外，类加载器之间的父子关系一般不是以继承的关系来实现的，而是通常使用组合关系来复用父加载器的代码。（<strong>组合优于继承，多用组合少用继承。</strong>）</p>
+<p>（2）执行流程</p>
+<p>简单总结一下双亲委派模型的执行流程：</p>
+<ul>
+<li>在类加载的时候，系统会首先判断当前类是否被加载过。已经被加载的类会直接返回，否则才会尝试加载（每个父类加载器都会走一遍这个流程）。</li>
+<li>类加载器在进行类加载的时候，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器去完成（调用父加载器 <code>loadClass()</code>方法来加载类）。这样的话，所有的请求最终都会传送到顶层的启动类加载器 <code>BootstrapClassLoader</code> 中。</li>
+<li>只有当父加载器反馈自己无法完成这个加载请求（它的搜索范围中没有找到所需的类）时，子加载器才会尝试自己去加载（调用自己的 <code>findClass()</code> 方法来加载类）。</li>
+<li>如果子类加载器也无法加载这个类，那么它会抛出一个 <code>ClassNotFoundException</code> 异常。</li>
+</ul>
+<p>源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Loads the class with the specified &lt;a href=&quot;#name&quot;&gt;binary name&lt;/a&gt;.  The</span></span><br><span class="line"><span class="comment"> * default implementation of this method searches for classes in the</span></span><br><span class="line"><span class="comment"> * following order:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;ol&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *   &lt;li&gt;&lt;p&gt; Invoke &#123;<span class="doctag">@link</span> #findLoadedClass(String)&#125; to check if the class</span></span><br><span class="line"><span class="comment"> *   has already been loaded.  &lt;/p&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *   &lt;li&gt;&lt;p&gt; Invoke the &#123;<span class="doctag">@link</span> #loadClass(String) &lt;tt&gt;loadClass&lt;/tt&gt;&#125; method</span></span><br><span class="line"><span class="comment"> *   on the parent class loader.  If the parent is &lt;tt&gt;null&lt;/tt&gt; the class</span></span><br><span class="line"><span class="comment"> *   loader built-in to the virtual machine is used, instead.  &lt;/p&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *   &lt;li&gt;&lt;p&gt; Invoke the &#123;<span class="doctag">@link</span> #findClass(String)&#125; method to find the</span></span><br><span class="line"><span class="comment"> *   class.  &lt;/p&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;/ol&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt; If the class was found using the above steps, and the</span></span><br><span class="line"><span class="comment"> * &lt;tt&gt;resolve&lt;/tt&gt; flag is true, this method will then invoke the &#123;<span class="doctag">@link</span></span></span><br><span class="line"><span class="comment"> * #resolveClass(Class)&#125; method on the resulting &lt;tt&gt;Class&lt;/tt&gt; object.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt; Subclasses of &lt;tt&gt;ClassLoader&lt;/tt&gt; are encouraged to override &#123;<span class="doctag">@link</span></span></span><br><span class="line"><span class="comment"> * #findClass(String)&#125;, rather than this method.  &lt;/p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt; Unless overridden, this method synchronizes on the result of</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> #getClassLoadingLock &lt;tt&gt;getClassLoadingLock&lt;/tt&gt;&#125; method</span></span><br><span class="line"><span class="comment"> * during the entire class loading process.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>  name</span></span><br><span class="line"><span class="comment"> *         The &lt;a href=&quot;#name&quot;&gt;binary name&lt;/a&gt; of the class</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>  resolve</span></span><br><span class="line"><span class="comment"> *         If &lt;tt&gt;true&lt;/tt&gt; then resolve the class</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span>  The resulting &lt;tt&gt;Class&lt;/tt&gt; object</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span>  ClassNotFoundException</span></span><br><span class="line"><span class="comment"> *          If the class could not be found</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">protected</span> Class&lt;?&gt; loadClass(String name, <span class="type">boolean</span> resolve)</span><br><span class="line">    <span class="keyword">throws</span> ClassNotFoundException</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (getClassLoadingLock(name)) &#123;</span><br><span class="line">        <span class="comment">// First, check if the class has already been loaded</span></span><br><span class="line">        Class&lt;?&gt; c = findLoadedClass(name);</span><br><span class="line">        <span class="keyword">if</span> (c == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="type">long</span> <span class="variable">t0</span> <span class="operator">=</span> System.nanoTime();</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (parent != <span class="literal">null</span>) &#123;</span><br><span class="line">                    c = parent.loadClass(name, <span class="literal">false</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    c = findBootstrapClassOrNull(name);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">                <span class="comment">// ClassNotFoundException thrown if class not found</span></span><br><span class="line">                <span class="comment">// from the non-null parent class loader</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (c == <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="comment">// If still not found, then invoke findClass in order</span></span><br><span class="line">                <span class="comment">// to find the class.</span></span><br><span class="line">                <span class="type">long</span> <span class="variable">t1</span> <span class="operator">=</span> System.nanoTime();</span><br><span class="line">                c = findClass(name);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// this is the defining class loader; record the stats</span></span><br><span class="line">                sun.misc.PerfCounter.getParentDelegationTime().addTime(t1 - t0);</span><br><span class="line">                sun.misc.PerfCounter.getFindClassTime().addElapsedTimeFrom(t1);</span><br><span class="line">                sun.misc.PerfCounter.getFindClasses().increment();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (resolve) &#123;</span><br><span class="line">            resolveClass(c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：<strong>JVM 判定两个 Java 类是否相同的具体规则</strong> ：JVM 不仅要看类的全名是否相同，还要看加载此类的类加载器是否一样。只有两者都相同的情况，才认为两个类是相同的。即使两个类来源于同一个 <code>Class</code> 文件，被同一个虚拟机加载，只要加载它们的类加载器不同，那这两个类就必定不相同。</p>
+<p>（3） 双亲委派模型的好处</p>
+<p>双亲委派模型保证了 Java 程序的稳定运行，可以避免类的重复加载（JVM 区分不同类的方式不仅仅根据类名，相同的类文件被不同的类加载器加载产生的是两个不同的类），也保证了 Java 的核心 API 不被篡改。</p>
+<p>如果没有使用双亲委派模型，而是每个类加载器加载自己的话就会出现一些问题，比如我们编写一个称为 <code>java.lang.Object</code> 类的话，那么程序运行的时候，系统就会出现两个不同的 <code>Object</code> 类。双亲委派模型可以保证加载的是 JRE 里的那个 <code>Object</code> 类，而不是你写的 <code>Object</code> 类。这是因为 <code>AppClassLoader</code> 在加载你的 <code>Object</code> 类时，会委托给 <code>ExtClassLoader</code> 去加载，而 <code>ExtClassLoader</code> 又会委托给 <code>BootstrapClassLoader</code>，<code>BootstrapClassLoader</code> 发现自己已经加载过了 <code>Object</code> 类，会直接返回，不会去加载你写的 <code>Object</code> 类。</p>
+<p>（4）打破双亲委派模型方法</p>
+<p>自定义加载器的话，需要继承 <code>ClassLoader</code> 。如果我们不想打破双亲委派模型，就重写 <code>ClassLoader</code> 类中的 <code>findClass()</code> 方法即可，无法被父类加载器加载的类最终会通过这个方法被加载。但是，如果想打破双亲委派模型则需要重写 <code>loadClass()</code> 方法。例如，子类加载器可以在委派给父类加载器之前，先自己尝试加载这个类，或者在父类加载器返回之后，再尝试从其他地方加载这个类。具体的规则由我们自己实现，根据项目需求定制化。</p>
+<p>我们比较熟悉的 Tomcat 服务器为了能够优先加载 Web 应用目录下的类，然后再加载其他目录下的类，就自定义了类加载器 <code>WebAppClassLoader</code> 来打破双亲委托机制。这也是 Tomcat 下 Web 应用之间的类实现隔离的具体原理。</p>
+<p><img src="/./../images/java/tomcat_class_loader_model.png"></p>
+<p>从图中的委派关系中可以看出：</p>
+<ul>
+<li><code>CommonClassLoader</code>作为 <code>CatalinaClassLoader</code> 和 <code>SharedClassLoader</code> 的父加载器。<code>CommonClassLoader</code> 能加载的类都可以被 <code>CatalinaClassLoader</code> 和 <code>SharedClassLoader</code> 使用。因此，<code>CommonClassLoader</code> 是为了实现公共类库（可以被所有 Web 应用和 Tomcat 内部组件使用的类库）的共享和隔离。</li>
+<li><code>CatalinaClassLoader</code> 和 <code>SharedClassLoader</code> 能加载的类则与对方相互隔离。<code>CatalinaClassLoader</code> 用于加载 Tomcat 自身的类，为了隔离 Tomcat 本身的类和 Web 应用的类。<code>SharedClassLoader</code> 作为 <code>WebAppClassLoader</code> 的父加载器，专门来加载 Web 应用之间共享的类比如 Spring、Mybatis。</li>
+<li>每个 Web 应用都会创建一个单独的 <code>WebAppClassLoader</code>，并在启动 Web 应用的线程里设置线程线程上下文类加载器为 <code>WebAppClassLoader</code>。各个 <code>WebAppClassLoader</code> 实例之间相互隔离，进而实现 Web 应用之间的类隔。</li>
+</ul>
+<h2 id="3-3-上下文类加载器"><a href="#3-3-上下文类加载器" class="headerlink" title="3.3 上下文类加载器"></a>3.3 上下文类加载器</h2><p>单纯依靠自定义类加载器没办法满足某些场景的要求，例如，有些情况下，高层的类加载器需要加载低层的加载器才能加载的类。</p>
+<p>比如，SPI 中，SPI 的接口（如 <code>java.sql.Driver</code>）是由 Java 核心库提供的，由 <code>BootstrapClassLoader</code> 加载。而 SPI 的实现（如 <code>com.mysql.cj.jdbc.Driver</code>）是由第三方供应商提供的，它们是由应用程序类加载器或者自定义类加载器来加载的。默认情况下，一个类及其依赖类由同一个类加载器加载。所以，加载 SPI 的接口的类加载器（<code>BootstrapClassLoader</code>）也会用来加载 SPI 的实现。按照双亲委派模型，<code>BootstrapClassLoader</code> 是无法找到 SPI 的实现类的，因为它无法委托给子类加载器去尝试加载。</p>
+<p>再比如，假设我们的项目中有 Spring 的 jar 包，由于其是 Web 应用之间共享的，因此会由 <code>SharedClassLoader</code> 加载（Web 服务器是 Tomcat）。我们项目中有一些用到了 Spring 的业务类，比如实现了 Spring 提供的接口、用到了 Spring 提供的注解。所以，加载 Spring 的类加载器（也就是 <code>SharedClassLoader</code>）也会用来加载这些业务类。但是业务类在 Web 应用目录下，不在 <code>SharedClassLoader</code> 的加载路径下，所以 <code>SharedClassLoader</code> 无法找到业务类，也就无法加载它们。</p>
+<p>如何解决这个问题呢？ 这个时候就需要用到 <strong>线程上下文类加载器（<code>ThreadContextClassLoader</code>）</strong> 了。</p>
+<p>拿 Spring 这个例子来说，当 Spring 需要加载业务类的时候，它不是用自己的类加载器，而是用当前线程的上下文类加载器。还记得我上面说的吗？每个 Web 应用都会创建一个单独的 <code>WebAppClassLoader</code>，并在启动 Web 应用的线程里设置线程线程上下文类加载器为 <code>WebAppClassLoader</code>。这样就可以让高层的类加载器（<code>SharedClassLoader</code>）借助子类加载器（ <code>WebAppClassLoader</code>）来加载业务类，破坏了 Java 的类加载委托机制，让应用逆向使用类加载器。</p>
+<p>线程线程上下文类加载器的原理是将一个类加载器保存在线程私有数据里，跟线程绑定，然后在需要的时候取出来使用。这个类加载器通常是由应用程序或者容器（如 Tomcat）设置的。</p>
+<p><code>Java.lang.Thread</code> 中的 <code>getContextClassLoader()</code>和 <code>setContextClassLoader(ClassLoader cl)</code>分别用来获取和设置线程的上下文类加载器。如果没有通过 <code>setContextClassLoader(ClassLoader cl)</code>进行设置的话，线程将继承其父线程的上下文类加载器。</p>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p>（1）Java内存区域详解：<a target="_blank" rel="noopener" href="https://javaguide.cn/java/jvm/memory-area.html">https://javaguide.cn/java/jvm/memory-area.html</a></p>
+<p>（2）JVM垃圾回收详解：<a target="_blank" rel="noopener" href="https://javaguide.cn/java/jvm/jvm-garbage-collection.html">https://javaguide.cn/java/jvm/jvm-garbage-collection.html</a></p>
+<p>（3）GC - Java 垃圾回收基础知识：<a target="_blank" rel="noopener" href="https://www.pdai.tech/md/java/jvm/java-jvm-gc.html">https://www.pdai.tech/md/java/jvm/java-jvm-gc.html</a></p>
+<p>（4）类加载器详解: <a target="_blank" rel="noopener" href="https://javaguide.cn/java/jvm/classloader.htm">https://javaguide.cn/java/jvm/classloader.htm</a></p>
+<h1 id="遗留TODO"><a href="#遗留TODO" class="headerlink" title="遗留TODO"></a>遗留TODO</h1><p>（1）方法区和运行时常量池深入了解</p>
+<p>（2）hotspot虚拟机对象的创建、布局、访问定位等问题</p>
+<p>（3）ZGC 垃圾收集器了解</p>
+<p>（4）深入了解jvm常见问题排查思路（<a target="_blank" rel="noopener" href="https://javaguide.cn/java/jvm/jvm-parameters-intro.html#%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90%E3%80%81https://www.pdai.tech/md/java/jvm/java-jvm-gc-g1.html#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%EF%BC%89">https://javaguide.cn/java/jvm/jvm-parameters-intro.html#%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90、https://www.pdai.tech/md/java/jvm/java-jvm-gc-g1.html#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99）</a></p>
+<p>（5）WebAppClassLoader深入了解？</p>
+<p>（6）组合优于继承了解</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>JVM</p><p><a href="http://mercurius-lei.github.io/2023/09/25/java_jvm/">http://mercurius-lei.github.io/2023/09/25/java_jvm/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>lei.ch1941</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-09-25</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-11-05</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/todo/">todo</a><a class="link-muted mr-2" rel="tag" href="/tags/Java/">Java</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/09/25/java_new_feature/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Java版本新特性</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/09/25/java_threadpool/"><span class="level-item">Java线程池</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><script src="https://utteranc.es/client.js" repo="Mercurius-lei/Mercurius-lei.github.io" issue-term="pathname" label="question" theme="github-light" crossorigin="anonymous" async></script></div></div></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#1-Java内存区域"><span class="level-left"><span class="level-item">1. Java内存区域</span></span></a></li><li><a class="level is-mobile" href="#2-垃圾回收"><span class="level-left"><span class="level-item">2. 垃圾回收</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#2-1-内存分配和回收原则"><span class="level-left"><span class="level-item">2.1 内存分配和回收原则</span></span></a></li><li><a class="level is-mobile" href="#2-2-死亡对象判断方法"><span class="level-left"><span class="level-item">2.2 死亡对象判断方法</span></span></a></li><li><a class="level is-mobile" href="#2-3-垃圾收集算法"><span class="level-left"><span class="level-item">2.3 垃圾收集算法</span></span></a></li><li><a class="level is-mobile" href="#2-4-垃圾收集器"><span class="level-left"><span class="level-item">2.4 垃圾收集器</span></span></a></li><li><a class="level is-mobile" href="#2-5-GC-分类"><span class="level-left"><span class="level-item">2.5 GC 分类</span></span></a></li><li><a class="level is-mobile" href="#2-6-JDK命令行工具"><span class="level-left"><span class="level-item">2.6 JDK命令行工具</span></span></a></li></ul></li><li><a class="level is-mobile" href="#3-类加载"><span class="level-left"><span class="level-item">3. 类加载</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#3-1-类加载器"><span class="level-left"><span class="level-item">3.1 类加载器</span></span></a></li><li><a class="level is-mobile" href="#3-2-双亲委派模型"><span class="level-left"><span class="level-item">3.2 双亲委派模型</span></span></a></li><li><a class="level is-mobile" href="#3-3-上下文类加载器"><span class="level-left"><span class="level-item">3.3 上下文类加载器</span></span></a></li></ul></li><li><a class="level is-mobile" href="#参考文档"><span class="level-left"><span class="level-item">参考文档</span></span></a></li><li><a class="level is-mobile" href="#遗留TODO"><span class="level-left"><span class="level-item">遗留TODO</span></span></a></li></ul></div></div><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Java/"><span class="tag">Java</span><span class="tag">12</span></a></div><div class="control"><a class="tags has-addons" href="/tags/k8s/"><span class="tag">k8s</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/todo/"><span class="tag">todo</span><span class="tag">27</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"><span class="tag">分布式</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B9%B6%E5%8F%91/"><span class="tag">并发</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="tag">数据库</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"><span class="tag">消息队列</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%9B%91%E6%8E%A7/"><span class="tag">监控</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%93%E5%AD%98/"><span class="tag">缓存</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/"><span class="tag">网络</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="tag">设计模式</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Java/"><span class="level-start"><span class="level-item">Java</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/categories/k8s/"><span class="level-start"><span class="level-item">k8s</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"><span class="level-start"><span class="level-item">分布式</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="level-start"><span class="level-item">数据库</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%AE%97%E6%B3%95/"><span class="level-start"><span class="level-item">算法</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BD%91%E7%BB%9C/"><span class="level-start"><span class="level-item">网络</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="level-start"><span class="level-item">设计模式</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/images/lr.svg" alt="蓉的个人博客" height="28"></a><p class="is-size-7"><span>&copy; 2024 lei.ch1941</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/Mercurius-lei"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
